@@ -66,6 +66,24 @@
     </LinearLayout>
 
     <ProgressBar
+        android:id="@+id/tram_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:max="100"
+        android:progress="0" />
+
+    <TextView
+        android:id="@+id/tram_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tramwaj czeka"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp" />
+
+    <ProgressBar
         android:id="@+id/train_progress"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
@@ -84,21 +102,51 @@
         android:layout_marginBottom="16dp" />
 
     <ProgressBar
-        android:id="@+id/tram_progress"
+        android:id="@+id/train_progress2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_marginTop="20dp"
         android:max="100"
-        android:progress="0" />
+        android:progress="0"
+        android:visibility="gone" />
 
     <TextView
-        android:id="@+id/tram_status"
+        android:id="@+id/train_status2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tramwaj czeka"
+        android:text="Pociąg czeka"
         android:textSize="16sp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/train_progress3"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:max="100"
+        android:progress="0"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/train_status3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pociąg czeka"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/new_train_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kup nową linie"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp" />
 
 </LinearLayout>
