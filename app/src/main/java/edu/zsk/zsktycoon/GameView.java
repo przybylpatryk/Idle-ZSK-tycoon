@@ -1,11 +1,19 @@
 package edu.zsk.zsktycoon;
 
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 import android.os.Handler;
 import android.os.Looper;
 
-public class GameView extends ViewModel {
+public class GameView {
+
+    private static GameView instance;
+
+    public static GameView getInstance() {
+        if (instance == null) {
+            instance = new GameView();
+        }
+        return instance;
+    }
 
     public MutableLiveData<Long> avenidaStudents = new MutableLiveData<>(0L);
     public MutableLiveData<Long> schoolStudents = new MutableLiveData<>(0L);
@@ -30,7 +38,19 @@ public class GameView extends ViewModel {
     public MutableLiveData<Long> nextTrainCost = new MutableLiveData<>(50L);
     public MutableLiveData<Integer> ownedTrainsCount = new MutableLiveData<>(1);
 
-    private Handler handler = new Handler(Looper.getMainLooper());
+    public MutableLiveData<Integer> tramCapacityLevel = new MutableLiveData<>(1);
+    public MutableLiveData<Integer> tramSpeedLevel    = new MutableLiveData<>(1);
+    public MutableLiveData<Integer> train1CapacityLevel = new MutableLiveData<>(1);
+    public MutableLiveData<Integer> train1SpeedLevel    = new MutableLiveData<>(1);
+    public MutableLiveData<Integer> train2CapacityLevel = new MutableLiveData<>(1);
+    public MutableLiveData<Integer> train2SpeedLevel    = new MutableLiveData<>(1);
+    public MutableLiveData<Integer> train3CapacityLevel = new MutableLiveData<>(1);
+    public MutableLiveData<Integer> train3SpeedLevel    = new MutableLiveData<>(1);
+
+    private static final int  MAX_UPGRADE_LEVEL = 5;
+    private static final long UPGRADE_BASE_COST = 20L;
+
+    private final Handler handler = new Handler(Looper.getMainLooper());
 
     private Runnable train1LoopRunnable;
     private Runnable train2LoopRunnable;
@@ -39,15 +59,79 @@ public class GameView extends ViewModel {
 
     private long tramPassengers = 0;
 
-    public GameView() {
+    private GameView() {
         startTrain1Loop();
         startTramLoop();
     }
 
+    public int getTramCapacity() {
+        Integer lvl = tramCapacityLevel.getValue();
+        return 20 + (lvl != null ? (lvl - 1) * 10 : 0);
+    }
+
+    public int getTramStepMs() {
+        Integer lvl = tramSpeedLevel.getValue();
+        return Math.max(400 - (lvl != null ? (lvl - 1) * 40 : 0), 80);
+    }
+
+    public int getTrain1Passengers() {
+        Integer lvl = train1CapacityLevel.getValue();
+        return 4 + (lvl != null ? (lvl - 1) * 2 : 0);
+    }
+
+    public int getTrain1StepMs() {
+        Integer lvl = train1SpeedLevel.getValue();
+        return Math.max(500 - (lvl != null ? (lvl - 1) * 50 : 0), 100);
+    }
+
+    public int getTrain2Passengers() {
+        Integer lvl = train2CapacityLevel.getValue();
+        return 7 + (lvl != null ? (lvl - 1) * 3 : 0);
+    }
+
+    public int getTrain2StepMs() {
+        Integer lvl = train2SpeedLevel.getValue();
+        return Math.max(700 - (lvl != null ? (lvl - 1) * 70 : 0), 140);
+    }
+
+    public int getTrain3Passengers() {
+        Integer lvl = train3CapacityLevel.getValue();
+        return 11 + (lvl != null ? (lvl - 1) * 4 : 0);
+    }
+
+    public int getTrain3StepMs() {
+        Integer lvl = train3SpeedLevel.getValue();
+        return Math.max(1000 - (lvl != null ? (lvl - 1) * 100 : 0), 200);
+    }
+
+    public long getUpgradeCost(int currentLevel) {
+        return UPGRADE_BASE_COST * currentLevel;
+    }
+
+    public boolean upgradeTramCapacity()    { return doUpgrade(tramCapacityLevel); }
+    public boolean upgradeTramSpeed()       { return doUpgrade(tramSpeedLevel); }
+    public boolean upgradeTrain1Capacity()  { return doUpgrade(train1CapacityLevel); }
+    public boolean upgradeTrain1Speed()     { return doUpgrade(train1SpeedLevel); }
+    public boolean upgradeTrain2Capacity()  { return doUpgrade(train2CapacityLevel); }
+    public boolean upgradeTrain2Speed()     { return doUpgrade(train2SpeedLevel); }
+    public boolean upgradeTrain3Capacity()  { return doUpgrade(train3CapacityLevel); }
+    public boolean upgradeTrain3Speed()     { return doUpgrade(train3SpeedLevel); }
+
+    private boolean doUpgrade(MutableLiveData<Integer> levelLiveData) {
+        Integer currentLevel = levelLiveData.getValue();
+        Long school = schoolStudents.getValue();
+        if (currentLevel == null || school == null) return false;
+        if (currentLevel >= MAX_UPGRADE_LEVEL) return false;
+        long cost = getUpgradeCost(currentLevel);
+        if (school < cost) return false;
+        schoolStudents.setValue(school - cost);
+        levelLiveData.setValue(currentLevel + 1);
+        return true;
+    }
+
     private void startTramLoop() {
         tramLoopRunnable = new Runnable() {
-            @Override
-            public void run() {
+            @Override public void run() {
                 startTramRide();
                 handler.postDelayed(this, 6000);
             }
@@ -57,41 +141,32 @@ public class GameView extends ViewModel {
 
     private void startTramRide() {
         if (Boolean.TRUE.equals(tramActive.getValue())) return;
-
         Long onPlatform = avenidaStudents.getValue();
         if (onPlatform == null || onPlatform == 0) return;
 
-        long canTake = 20;
-        long willTake = Math.min(onPlatform, canTake);
-
+        long willTake = Math.min(onPlatform, getTramCapacity());
         tramPassengers = willTake;
         avenidaStudents.setValue(onPlatform - willTake);
-
         tramActive.setValue(true);
         tramStatus.setValue("Tramwaj jedzie z " + willTake + " osobami");
         tramProgress.setValue(0);
 
+        final int stepMs = getTramStepMs();
         handler.postDelayed(new Runnable() {
             int progress = 0;
-            @Override
-            public void run() {
+            @Override public void run() {
                 progress += 10;
                 tramProgress.setValue(progress);
-                if (progress >= 100) {
-                    finishTramRide();
-                } else {
-                    handler.postDelayed(this, 400);
-                }
+                if (progress >= 100) finishTramRide();
+                else handler.postDelayed(this, stepMs);
             }
-        }, 400);
+        }, stepMs);
     }
 
     private void finishTramRide() {
         Long inSchool = schoolStudents.getValue();
-        if (inSchool != null && tramPassengers > 0) {
+        if (inSchool != null && tramPassengers > 0)
             schoolStudents.setValue(inSchool + tramPassengers);
-        }
-
         tramActive.setValue(false);
         tramStatus.setValue("Tramwaj czeka (przewiózł " + tramPassengers + ")");
         tramProgress.setValue(0);
@@ -100,8 +175,7 @@ public class GameView extends ViewModel {
 
     private void startTrain1Loop() {
         train1LoopRunnable = new Runnable() {
-            @Override
-            public void run() {
+            @Override public void run() {
                 startTrain1Ride();
                 handler.postDelayed(this, 6000);
             }
@@ -112,31 +186,28 @@ public class GameView extends ViewModel {
     private void startTrain1Ride() {
         if (Boolean.TRUE.equals(train1Active.getValue())) return;
         train1Active.setValue(true);
+        final int passengers = getTrain1Passengers();
+        final int stepMs = getTrain1StepMs();
         train1Status.setValue("Linia Pobiedziska jedzie...");
         train1Progress.setValue(0);
-
         handler.postDelayed(new Runnable() {
             int prog = 0;
-            @Override
-            public void run() {
+            @Override public void run() {
                 prog += 10;
                 train1Progress.setValue(prog);
                 if (prog >= 100) {
                     Long cur = avenidaStudents.getValue();
-                    if (cur != null) avenidaStudents.setValue(cur + 4);
+                    if (cur != null) avenidaStudents.setValue(cur + passengers);
                     train1Active.setValue(false);
-                    train1Status.setValue("Z Pobiedzisk przyjechały 4 osoby");
-                } else {
-                    handler.postDelayed(this, 500);
-                }
+                    train1Status.setValue("Z Pobiedzisk przyjechało " + passengers + " osób");
+                } else handler.postDelayed(this, stepMs);
             }
-        }, 500);
+        }, stepMs);
     }
 
     private void startTrain2Loop() {
         train2LoopRunnable = new Runnable() {
-            @Override
-            public void run() {
+            @Override public void run() {
                 startTrain2Ride();
                 handler.postDelayed(this, 9000);
             }
@@ -147,31 +218,28 @@ public class GameView extends ViewModel {
     private void startTrain2Ride() {
         if (Boolean.TRUE.equals(train2Active.getValue())) return;
         train2Active.setValue(true);
+        final int passengers = getTrain2Passengers();
+        final int stepMs = getTrain2StepMs();
         train2Status.setValue("Linia Puszczykowo jedzie...");
         train2Progress.setValue(0);
-
         handler.postDelayed(new Runnable() {
             int prog = 0;
-            @Override
-            public void run() {
+            @Override public void run() {
                 prog += 10;
                 train2Progress.setValue(prog);
                 if (prog >= 100) {
                     Long cur = avenidaStudents.getValue();
-                    if (cur != null) avenidaStudents.setValue(cur + 7);
+                    if (cur != null) avenidaStudents.setValue(cur + passengers);
                     train2Active.setValue(false);
-                    train2Status.setValue("Z Puszczykowa przyjechało 7 osób");
-                } else {
-                    handler.postDelayed(this, 700);
-                }
+                    train2Status.setValue("Z Puszczykowa przyjechało " + passengers + " osób");
+                } else handler.postDelayed(this, stepMs);
             }
-        }, 700);
+        }, stepMs);
     }
 
     private void startTrain3Loop() {
         train3LoopRunnable = new Runnable() {
-            @Override
-            public void run() {
+            @Override public void run() {
                 startTrain3Ride();
                 handler.postDelayed(this, 12000);
             }
@@ -182,32 +250,29 @@ public class GameView extends ViewModel {
     private void startTrain3Ride() {
         if (Boolean.TRUE.equals(train3Active.getValue())) return;
         train3Active.setValue(true);
+        final int passengers = getTrain3Passengers();
+        final int stepMs = getTrain3StepMs();
         train3Status.setValue("Linia Opalenica jedzie...");
         train3Progress.setValue(0);
-
         handler.postDelayed(new Runnable() {
             int prog = 0;
-            @Override
-            public void run() {
+            @Override public void run() {
                 prog += 10;
                 train3Progress.setValue(prog);
                 if (prog >= 100) {
                     Long cur = avenidaStudents.getValue();
-                    if (cur != null) avenidaStudents.setValue(cur + 11);
+                    if (cur != null) avenidaStudents.setValue(cur + passengers);
                     train3Active.setValue(false);
-                    train3Status.setValue("Z Opalenicy przyjechało 11 osób");
-                } else {
-                    handler.postDelayed(this, 1000);
-                }
+                    train3Status.setValue("Z Opalenicy przyjechało " + passengers + " osób");
+                } else handler.postDelayed(this, stepMs);
             }
-        }, 1000);
+        }, stepMs);
     }
 
     public void buyNewTrain() {
         Long school = schoolStudents.getValue();
         Long cost = nextTrainCost.getValue();
         Integer owned = ownedTrainsCount.getValue();
-
         if (school == null || cost == null || owned == null) return;
         if (school < cost || owned >= 3) return;
 
@@ -225,14 +290,5 @@ public class GameView extends ViewModel {
         }
 
         nextTrainCost.setValue((long)(cost * 2.5));
-    }
-
-    @Override
-    protected void onCleared() {
-        super.onCleared();
-        if (train1LoopRunnable != null) handler.removeCallbacks(train1LoopRunnable);
-        if (train2LoopRunnable != null) handler.removeCallbacks(train2LoopRunnable);
-        if (train3LoopRunnable != null) handler.removeCallbacks(train3LoopRunnable);
-        if (tramLoopRunnable != null) handler.removeCallbacks(tramLoopRunnable);
     }
 }
