@@ -14,7 +14,7 @@
         android:theme="@style/Theme.ZSKtycoon">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,10 +22,9 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".UpgradeActivity"
-            android:exported="false"
-            android:label="Ulepszenia" />
+        <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".TramUpgradeActivity" android:exported="false" />
+        <activity android:name=".TrainUpgradeActivity" android:exported="false" />
 
     </application>
 
