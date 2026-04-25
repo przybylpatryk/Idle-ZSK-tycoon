@@ -2,93 +2,61 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="30dp"
-    android:gravity="center_horizontal">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZSK Tycoon"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="40dp" />
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="40dp">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="AVENIDA"
-                android:textColor="#888888"
-                android:textSize="16sp" />
+                android:text="AVENIDA" />
 
             <TextView
                 android:id="@+id/avenida_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="40sp" />
+                android:text="0" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SZKOŁA"
-                android:textColor="#888888"
-                android:textSize="16sp" />
+                android:text="SZKOŁA" />
 
             <TextView
                 android:id="@+id/school_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="40sp" />
+                android:text="0" />
+
+            <TextView
+                android:id="@+id/teacher_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nauczyciele: 0" />
         </LinearLayout>
     </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/train_progress"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginTop="20dp"
-        android:max="100"
-        android:progress="0" />
-
-    <TextView
-        android:id="@+id/train_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pociąg czeka"
-        android:textSize="16sp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp" />
 
     <ProgressBar
         android:id="@+id/tram_progress"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
         android:max="100"
         android:progress="0" />
 
@@ -96,9 +64,70 @@
         android:id="@+id/tram_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tramwaj czeka"
-        android:textSize="16sp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp" />
+        android:text="Tramwaj czeka" />
+
+    <ProgressBar
+        android:id="@+id/train_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0" />
+
+    <TextView
+        android:id="@+id/train_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pociąg czeka" />
+
+    <ProgressBar
+        android:id="@+id/train_progress2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/train_status2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pociąg czeka"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/train_progress3"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/train_status3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pociąg czeka"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/new_train_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kup nową linię" />
+
+    <Button
+        android:id="@+id/tram_upgrade_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ulepszenia tramwaju" />
+
+    <Button
+        android:id="@+id/train_upgrade_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ulepszenia pociągów" />
 
 </LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pojemność" />
+
+    <TextView
+        android:id="@+id/train_cap_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Poziom: 1/5" />
+
+    <Button
+        android:id="@+id/train_cap_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ulepsz" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prędkość" />
+
+    <TextView
+        android:id="@+id/train_spd_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Poziom: 1/5" />
+
+    <Button
+        android:id="@+id/train_spd_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ulepsz" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modele:" />
+
+    <LinearLayout
+        android:id="@+id/models_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+</LinearLayout>

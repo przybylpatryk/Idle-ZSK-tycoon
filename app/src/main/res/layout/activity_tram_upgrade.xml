@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wróć" />
+
+        <TextView
+            android:id="@+id/school_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Uczniowie: 0" />
+
+        <TextView
+            android:id="@+id/teacher_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nauczyciele: 0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pojemność tramwaju" />
+
+        <TextView
+            android:id="@+id/tram_cap_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Poziom: 1/5" />
+
+        <Button
+            android:id="@+id/tram_cap_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ulepsz" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prędkość tramwaju" />
+
+        <TextView
+            android:id="@+id/tram_spd_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Poziom: 1/5" />
+
+        <Button
+            android:id="@+id/tram_spd_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ulepsz" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modele:" />
+
+        <LinearLayout
+            android:id="@+id/models_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </LinearLayout>
+</ScrollView>
