@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +107,12 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("nbr", 3);
             startActivity(intent);
         });
+        newTrainBtn.setOnClickListener(v -> gm.buyNewTrain());
+
+        tramUpgradeBtn.setOnClickListener(v ->
+                startActivity(new Intent(this, TramUpgradeActivity.class)));
+        trainUpgradeBtn.setOnClickListener(v ->
+                startActivity(new Intent(this, TrainUpgradeActivity.class)));
     }
 
     /**
