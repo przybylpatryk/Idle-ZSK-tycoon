@@ -1,49 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F0F4FF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/back_btn"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Wróć" />
+            android:background="@drawable/bg_header"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:paddingBottom="24dp"
+            android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/school_count"
-            android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/back_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="←"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:background="@android:color/transparent"
+                android:stateListAnimator="@null"
+                android:padding="0dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ulepszenia pociągów"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="8dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="end">
+
+                <TextView
+                    android:id="@+id/school_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 uczniów"
+                    android:textSize="12sp"
+                    android:textColor="#BBDEFB" />
+
+                <TextView
+                    android:id="@+id/teacher_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 naucz."
+                    android:textSize="12sp"
+                    android:textColor="#BBDEFB" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Uczniowie: 0" />
+            android:paddingHorizontal="16dp"
+            android:paddingTop="12dp">
 
-        <TextView
-            android:id="@+id/teacher_count"
-            android:layout_width="wrap_content"
+            <include
+                android:id="@+id/train1_section"
+                layout="@layout/item_train_section" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/train2_wrapper"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nauczyciele: 0" />
+            android:paddingHorizontal="16dp"
+            android:paddingTop="12dp"
+            android:visibility="gone">
 
-        <Button
-            android:id="@+id/buy_line_btn"
-            android:layout_width="wrap_content"
+            <include
+                android:id="@+id/train2_section"
+                layout="@layout/item_train_section" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/train3_wrapper"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kup linię" />
+            android:paddingHorizontal="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="24dp"
+            android:visibility="gone">
 
-        <include
-            android:id="@+id/train1_section"
-            layout="@layout/item_train_section" />
+            <include
+                android:id="@+id/train3_section"
+                layout="@layout/item_train_section" />
+        </LinearLayout>
 
-        <include
-            android:id="@+id/train2_section"
-            layout="@layout/item_train_section"
-            android:visibility="gone" />
-
-        <include
-            android:id="@+id/train3_section"
-            layout="@layout/item_train_section"
-            android:visibility="gone" />
     </LinearLayout>
 </ScrollView>

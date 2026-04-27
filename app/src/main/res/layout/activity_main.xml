@@ -2,132 +2,491 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#F0F4FF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@drawable/bg_header"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:paddingBottom="24dp">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:alpha="0.95"
+            android:padding="10dp"
+            android:layout_marginEnd="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="AVENIDA" />
+                android:text="AVENIDA"
+                android:textSize="10sp"
+                android:textColor="#90A4AE"
+                android:textStyle="bold"
+                android:letterSpacing="0.08" />
 
             <TextView
                 android:id="@+id/avenida_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0" />
+                android:text="0"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#1565C0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="uczniów"
+                android:textSize="10sp"
+                android:textColor="#90A4AE" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:alpha="0.95"
+            android:padding="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SZKOŁA" />
+                android:text="SZKOŁA"
+                android:textSize="10sp"
+                android:textColor="#90A4AE"
+                android:textStyle="bold"
+                android:letterSpacing="0.08" />
 
             <TextView
                 android:id="@+id/school_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0" />
+                android:text="0"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#1565C0" />
 
             <TextView
                 android:id="@+id/teacher_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nauczyciele: 0" />
+                android:text="Nauczyciele: 0"
+                android:textSize="11sp"
+                android:textColor="#455A64" />
         </LinearLayout>
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/tram_progress"
-        style="?android:attr/progressBarStyleHorizontal"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:elevation="4dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/bg_section_accent"
+                        android:layout_marginEnd="10dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tramwaj"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A237E" />
+
+                    <!-- Placeholder na ikonę tramwaju PNG -->
+                    <!-- Zamień src na @drawable/ic_tram gdy dodasz plik PNG/SVG -->
+                    <ImageView
+                        android:id="@+id/tram_icon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@android:drawable/ic_menu_directions"
+                        android:contentDescription="Tramwaj" />
+
+                    <Button
+                        android:id="@+id/tram_upgrade_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:text="Ulepszenia"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#1E88E5"
+                        android:background="@drawable/btn_secondary"
+                        android:stateListAnimator="@null"
+                        android:layout_marginEnd="8dp" />
+                    <!--
+                        PLACEHOLDER: Dodaj własny obrazek tramwaju:
+                        1. Skopiuj plik np. tram.png do res/drawable/
+                        2. Zmień android:src="@drawable/tram"
+                    -->
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:layout_marginBottom="6dp">
+
+                    <ProgressBar
+                        android:id="@+id/tram_progress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:progressDrawable="@drawable/progress_tram"
+                        android:max="100"
+                        android:progress="0" />
+
+                    <!-- Ikona tramwaju jeździ po pasku (placeholder) -->
+                    <!-- Zamień @android:drawable/ic_menu_directions na @drawable/ic_tram_moving -->
+                    <ImageView
+                        android:id="@+id/tram_progress_icon"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@android:drawable/ic_menu_directions"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="Tramwaj na trasie" />
+
+                    <!--
+                        PLACEHOLDER na ruchomą ikonę:
+                        Docelowo pozycja tej ikony powinna być ustawiana dynamicznie z Javy:
+                        tramProgressIcon.setX(progressBar.getWidth() * progress / 100f - iconWidth/2f)
+                    -->
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tram_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tramwaj czeka"
+                    android:textSize="12sp"
+                    android:textColor="#546E7A" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/train1_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:elevation="4dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/bg_section_accent"
+                        android:backgroundTint="#43A047"
+                        android:layout_marginEnd="10dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Pociąg — Linia 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A237E" />
+
+                    <!-- Placeholder na ikonę pociągu PNG -->
+                    <ImageView
+                        android:id="@+id/train1_icon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@android:drawable/ic_menu_directions"
+                        android:contentDescription="Pociąg 1" />
+
+                    <Button
+                        android:id="@+id/train1_upgrade_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:text="Ulepszenia"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#1E88E5"
+                        android:background="@drawable/btn_secondary"
+                        android:stateListAnimator="@null" />
+                    <!--
+                        PLACEHOLDER: Dodaj własny obrazek pociągu:
+                        1. Skopiuj plik np. train.png do res/drawable/
+                        2. Zmień android:src="@drawable/train"
+                    -->
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:layout_marginBottom="6dp">
+
+                    <ProgressBar
+                        android:id="@+id/train_progress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:progressDrawable="@drawable/progress_train"
+                        android:max="100"
+                        android:progress="0" />
+
+                    <ImageView
+                        android:id="@+id/train1_progress_icon"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@android:drawable/ic_menu_directions"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="Pociąg na trasie" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/train_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pociąg czeka"
+                    android:textSize="12sp"
+                    android:textColor="#546E7A" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/train2_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:elevation="4dp"
+                android:layout_marginBottom="12dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/bg_section_accent"
+                        android:backgroundTint="#43A047"
+                        android:layout_marginEnd="10dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Pociąg — Linia 2"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A237E" />
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@android:drawable/ic_menu_directions"
+                        android:contentDescription="Pociąg 2" />
+
+                    <Button
+                        android:id="@+id/train2_upgrade_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:text="Ulepszenia"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#1E88E5"
+                        android:background="@drawable/btn_secondary"
+                        android:stateListAnimator="@null" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:layout_marginBottom="6dp">
+
+                    <ProgressBar
+                        android:id="@+id/train_progress2"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:progressDrawable="@drawable/progress_train"
+                        android:max="100"
+                        android:progress="0" />
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@android:drawable/ic_menu_directions"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="Pociąg na trasie" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/train_status2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pociąg czeka"
+                    android:textSize="12sp"
+                    android:textColor="#546E7A" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/train3_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:elevation="4dp"
+                android:layout_marginBottom="12dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/bg_section_accent"
+                        android:backgroundTint="#43A047"
+                        android:layout_marginEnd="10dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Pociąg — Linia 3"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A237E" />
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@android:drawable/ic_menu_directions"
+                        android:contentDescription="Pociąg 3" />
+
+                    <Button
+                        android:id="@+id/train3_upgrade_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:text="Ulepszenia"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#1E88E5"
+                        android:background="@drawable/btn_secondary"
+                        android:stateListAnimator="@null" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:layout_marginBottom="6dp">
+
+                    <ProgressBar
+                        android:id="@+id/train_progress3"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:progressDrawable="@drawable/progress_train"
+                        android:max="100"
+                        android:progress="0" />
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@android:drawable/ic_menu_directions"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="Pociąg na trasie" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/train_status3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pociąg czeka"
+                    android:textSize="12sp"
+                    android:textColor="#546E7A" />
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="8dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="100"
-        android:progress="0" />
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:elevation="12dp"
+        android:padding="12dp">
 
-    <TextView
-        android:id="@+id/tram_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tramwaj czeka" />
+        <Button
+            android:id="@+id/new_train_btn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Kup nową linię"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/btn_primary"
+            android:stateListAnimator="@null"
+            android:layout_marginBottom="8dp" />
 
-    <ProgressBar
-        android:id="@+id/train_progress"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="100"
-        android:progress="0" />
-
-    <TextView
-        android:id="@+id/train_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pociąg czeka" />
-
-    <ProgressBar
-        android:id="@+id/train_progress2"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="100"
-        android:progress="0"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/train_status2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pociąg czeka"
-        android:visibility="gone" />
-
-    <ProgressBar
-        android:id="@+id/train_progress3"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="100"
-        android:progress="0"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/train_status3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pociąg czeka"
-        android:visibility="gone" />
-
-    <Button
-        android:id="@+id/new_train_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kup nową linię" />
-
-    <Button
-        android:id="@+id/tram_upgrade_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ulepszenia tramwaju" />
-
-    <Button
-        android:id="@+id/train_upgrade_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ulepszenia pociągów" />
+    </LinearLayout>
 
 </LinearLayout>

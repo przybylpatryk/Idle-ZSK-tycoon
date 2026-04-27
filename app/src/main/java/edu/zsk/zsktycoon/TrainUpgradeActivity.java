@@ -16,17 +16,15 @@ public class TrainUpgradeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_train_upgrade);
         gm = GameView.getInstance();
 
+        int trainNumber = getIntent().getIntExtra("nbr", 0);
+
         TextView schoolCount = findViewById(R.id.school_count);
         TextView teacherCount = findViewById(R.id.teacher_count);
-        Button buyLineBtn = findViewById(R.id.buy_line_btn);
         Button backBtn = findViewById(R.id.back_btn);
         backBtn.setOnClickListener(v -> finish());
 
         gm.schoolStudents.observe(this, val -> schoolCount.setText("Uczniowie: " + val));
         gm.teachers.observe(this, val -> teacherCount.setText("Nauczyciele: " + val));
-        gm.nextTrainCost.observe(this, cost -> buyLineBtn.setText("Kup linię (" + cost + " uczniów)"));
-        gm.ownedTrainsCount.observe(this, cnt -> buyLineBtn.setEnabled(cnt < 3));
-        buyLineBtn.setOnClickListener(v -> gm.buyNewTrain());
 
         setupTrainSection(1, findViewById(R.id.train1_section), gm.train1CapacityLevel, gm.train1SpeedLevel,
                 gm.activeTrain1Model, gm.ownedTrain1Models, GameView.TRAIN_MODELS, "train1");
@@ -35,8 +33,9 @@ public class TrainUpgradeActivity extends AppCompatActivity {
         setupTrainSection(3, findViewById(R.id.train3_section), gm.train3CapacityLevel, gm.train3SpeedLevel,
                 gm.activeTrain3Model, gm.ownedTrain3Models, GameView.TRAIN_MODELS, "train3");
 
-        gm.train2Owned.observe(this, owned -> findViewById(R.id.train2_section).setVisibility(owned ? View.VISIBLE : View.GONE));
-        gm.train3Owned.observe(this, owned -> findViewById(R.id.train3_section).setVisibility(owned ? View.VISIBLE : View.GONE));
+        findViewById(R.id.train1_section).setVisibility(trainNumber == 1 ? View.VISIBLE : View.GONE);
+        findViewById(R.id.train2_wrapper).setVisibility(trainNumber == 2 ? View.VISIBLE : View.GONE);
+        findViewById(R.id.train3_wrapper).setVisibility(trainNumber == 3 ? View.VISIBLE : View.GONE);
     }
 
     private void setupTrainSection(int num, View section, MutableLiveData<Integer> capLvlData,
@@ -47,6 +46,8 @@ public class TrainUpgradeActivity extends AppCompatActivity {
         Button capBtn = section.findViewById(R.id.train_cap_btn);
         TextView spdLevel = section.findViewById(R.id.train_spd_level);
         Button spdBtn = section.findViewById(R.id.train_spd_btn);
+        TextView capCost = section.findViewById(R.id.train_cap_cost);
+        TextView spdCost = section.findViewById(R.id.train_spd_cost);
         LinearLayout modelsContainer = section.findViewById(R.id.models_container);
 
         capLvlData.observe(this, lvl -> {
@@ -57,6 +58,14 @@ public class TrainUpgradeActivity extends AppCompatActivity {
         spdLvlData.observe(this, lvl -> {
             String info = "Poziom " + lvl + "/5";
             spdLevel.setText(info);
+            spdBtn.setEnabled(lvl < 5);
+        });
+        capLvlData.observe(this, lvl -> {
+            capCost.setText(gm.getUpgradeCost(lvl) + " uczniów");
+            capBtn.setEnabled(lvl < 5);
+        });
+        spdLvlData.observe(this, lvl -> {
+            spdCost.setText(gm.getUpgradeCost(lvl) + " uczniów");
             spdBtn.setEnabled(lvl < 5);
         });
 

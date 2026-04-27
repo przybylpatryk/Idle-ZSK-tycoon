@@ -19,6 +19,8 @@ public class TramUpgradeActivity extends AppCompatActivity {
         TextView schoolCount = findViewById(R.id.school_count);
         TextView teacherCount = findViewById(R.id.teacher_count);
         TextView capLevel = findViewById(R.id.tram_cap_level);
+        TextView capCost = findViewById(R.id.tram_cap_cost);
+        TextView spdCost = findViewById(R.id.tram_spd_cost);
         Button capBtn = findViewById(R.id.tram_cap_btn);
         TextView spdLevel = findViewById(R.id.tram_spd_level);
         Button spdBtn = findViewById(R.id.tram_spd_btn);
@@ -36,6 +38,12 @@ public class TramUpgradeActivity extends AppCompatActivity {
         gm.tramSpeedLevel.observe(this, lvl -> {
             spdLevel.setText("Poziom " + lvl + "/5 (krok " + gm.getTramStepMs() + "ms)");
             spdBtn.setEnabled(lvl < 5);
+        });
+        gm.tramCapacityLevel.observe(this, lvl -> {
+            capCost.setText(gm.getUpgradeCost(lvl) + " uczniów");
+        });
+        gm.tramSpeedLevel.observe(this, lvl -> {
+            spdCost.setText(gm.getUpgradeCost(lvl) + " uczniów");
         });
 
         capBtn.setOnClickListener(v -> gm.upgradeTramCapacity());

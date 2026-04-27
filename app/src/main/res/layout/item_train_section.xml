@@ -2,50 +2,157 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:background="@drawable/bg_card"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:elevation="4dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pojemność" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
 
-    <TextView
-        android:id="@+id/train_cap_level"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Poziom: 1/5" />
+        <View
+            android:layout_width="4dp"
+            android:layout_height="20dp"
+            android:background="@drawable/bg_section_accent"
+            android:backgroundTint="#43A047"
+            android:layout_marginEnd="10dp" />
 
-    <Button
-        android:id="@+id/train_cap_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ulepsz" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pojemność"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E" />
+    </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Prędkość" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="14dp">
 
-    <TextView
-        android:id="@+id/train_spd_level"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Poziom: 1/5" />
+        <TextView
+            android:id="@+id/train_cap_level"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Poziom 1/5"
+            android:textSize="14sp"
+            android:textColor="#455A64" />
 
-    <Button
-        android:id="@+id/train_spd_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ulepsz" />
+        <TextView
+            android:id="@+id/train_cap_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50"
+            android:textSize="12sp"
+            android:textColor="#FF5722"
+            android:layout_marginEnd="8dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/train_cap_btn"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="Ulepsz ⬆"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/btn_primary"
+            android:stateListAnimator="@null" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Modele:" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="20dp"
+            android:background="@drawable/bg_section_accent"
+            android:backgroundTint="#1E88E5"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prędkość"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/train_spd_level"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Poziom 1/5"
+            android:textSize="14sp"
+            android:textColor="#455A64" />
+
+        <TextView
+            android:id="@+id/train_spd_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50"
+            android:textSize="12sp"
+            android:textColor="#FF5722"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/train_spd_btn"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="Ulepsz ⚡"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/btn_primary"
+            android:stateListAnimator="@null" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp">
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="20dp"
+            android:background="@drawable/bg_section_accent"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modele"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/models_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" />
+
 </LinearLayout>
