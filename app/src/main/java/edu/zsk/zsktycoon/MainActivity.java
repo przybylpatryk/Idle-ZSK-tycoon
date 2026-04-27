@@ -101,12 +101,18 @@ public class MainActivity extends AppCompatActivity {
                 train3Card.setVisibility(owned ? View.VISIBLE : View.GONE));
 
 
-        gm.nextTrainCost.observe(this, cost ->
-                newTrainBtn.setText("Kup nową linię (" + cost + " uczniów)"));
         gm.ownedTrainsCount.observe(this, cnt -> {
-            newTrainBtn.setEnabled(cnt < 3);
-            if (cnt >= 3) newTrainBtn.setText("Wszystkie linie kupione");
+            if (cnt >= 3) {
+                newTrainBtn.setVisibility(View.GONE);
+            } else {
+                newTrainBtn.setVisibility(View.VISIBLE);
+                newTrainBtn.setEnabled(true);
+            }
         });
+        gm.nextTrainCost.observe(this, cost -> {
+                newTrainBtn.setText("Kup nową linię (" + cost + " uczniów)");
+        });
+
         newTrainBtn.setOnClickListener(v -> gm.buyNewTrain());
 
         tramUpgradeBtn.setOnClickListener(v ->

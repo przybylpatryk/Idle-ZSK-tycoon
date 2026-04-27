@@ -21,20 +21,24 @@ public class GameView {
     public MutableLiveData<Integer> tramProgress = new MutableLiveData<>(0);
     public MutableLiveData<String> tramStatus = new MutableLiveData<>("Tramwaj czeka");
     public MutableLiveData<Boolean> tramActive = new MutableLiveData<>(false);
+    private boolean tramOutward = true;
 
     public MutableLiveData<Integer> train1Progress = new MutableLiveData<>(0);
     public MutableLiveData<String> train1Status = new MutableLiveData<>("Linia Pobiedziska czeka");
     public MutableLiveData<Boolean> train1Active = new MutableLiveData<>(false);
+    private boolean train1Outward = true;
 
     public MutableLiveData<Integer> train2Progress = new MutableLiveData<>(0);
     public MutableLiveData<String> train2Status = new MutableLiveData<>("Linia Puszczykowo (zablokowana)");
     public MutableLiveData<Boolean> train2Active = new MutableLiveData<>(false);
     public MutableLiveData<Boolean> train2Owned = new MutableLiveData<>(false);
+    private boolean train2Outward = true;
 
     public MutableLiveData<Integer> train3Progress = new MutableLiveData<>(0);
     public MutableLiveData<String> train3Status = new MutableLiveData<>("Linia Opalenica (zablokowana)");
     public MutableLiveData<Boolean> train3Active = new MutableLiveData<>(false);
     public MutableLiveData<Boolean> train3Owned = new MutableLiveData<>(false);
+    private boolean train3Outward = true;
 
     public MutableLiveData<Long> nextTrainCost = new MutableLiveData<>(50L);
     public MutableLiveData<Integer> ownedTrainsCount = new MutableLiveData<>(1);
@@ -292,27 +296,46 @@ public class GameView {
         tramPassengers = willTake;
         avenidaStudents.setValue(onPlatform - willTake);
         tramActive.setValue(true);
-        tramStatus.setValue("Tramwaj jedzie z " + willTake + " osobami");
+        tramOutward = true;
+        tramStatus.setValue("Tramwaj jedzie...");
         tramProgress.setValue(0);
-        int stepMs = getEffectiveTramStepMs();
+        final int stepMs = getEffectiveTramStepMs();
         handler.postDelayed(new Runnable() {
             int progress = 0;
             @Override public void run() {
-                progress += 10;
-                tramProgress.setValue(progress);
-                if (progress >= 100) {
-                    Long inSchool = schoolStudents.getValue();
-                    if (inSchool != null) schoolStudents.setValue(inSchool + tramPassengers);
-                    tramActive.setValue(false);
-                    tramStatus.setValue("Tramwaj czeka (przewiózł " + tramPassengers + ")");
-                    tramProgress.setValue(0);
-                    tramPassengers = 0;
-                    rollTeacher();
+                if (tramOutward) {
+                    progress += 10;
+                    if (progress > 100) progress = 100;
+                    tramProgress.setValue(progress);
+                    if (progress >= 100) {
+                        Long inSchool = schoolStudents.getValue();
+                        if (inSchool != null) schoolStudents.setValue(inSchool + tramPassengers);
+                        tramPassengers = 0;
+                        tramOutward = false;
+                        tramStatus.setValue("Tramwaj wraca...");
+                        handler.postDelayed(this, stepMs);
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
                 } else {
-                    handler.postDelayed(this, stepMs);
+                    progress -= 10;
+                    if (progress < 0) progress = 0;
+                    tramProgress.setValue(progress);
+                    if (progress <= 0) {
+                        finishTramRide();
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
                 }
             }
         }, stepMs);
+    }
+
+    private void finishTramRide() {
+        tramActive.setValue(false);
+        tramStatus.setValue("Tramwaj czeka");
+        tramProgress.setValue(0);
+        rollTeacher();
     }
 
     private void startTrain1Loop() {
@@ -326,6 +349,7 @@ public class GameView {
     private void startTrain1Ride() {
         if (Boolean.TRUE.equals(train1Active.getValue())) return;
         train1Active.setValue(true);
+        train1Outward = true;
         int passengers = getEffectiveTrain1Passengers();
         int stepMs = getEffectiveTrain1StepMs();
         train1Status.setValue("Linia Pobiedziska jedzie...");
@@ -333,17 +357,37 @@ public class GameView {
         handler.postDelayed(new Runnable() {
             int prog = 0;
             @Override public void run() {
-                prog += 10;
-                train1Progress.setValue(prog);
-                if (prog >= 100) {
-                    Long cur = avenidaStudents.getValue();
-                    if (cur != null) avenidaStudents.setValue(cur + passengers);
-                    train1Active.setValue(false);
-                    train1Status.setValue("Z Pobiedzisk przyjechało " + passengers + " osób");
-                    rollTeacher();
-                } else handler.postDelayed(this, stepMs);
+                if (train1Outward) {
+                    prog += 10;
+                    if (prog > 100) prog = 100;
+                    train1Progress.setValue(prog);
+                    if (prog >= 100) {
+                        train1Outward = false;
+                        train1Status.setValue("Linia Pobiedziska wraca...");
+                        handler.postDelayed(this, stepMs);
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
+                } else {
+                    prog -= 10;
+                    if (prog < 0) prog = 0;
+                    train1Progress.setValue(prog);
+                    if (prog <= 0) {
+                        Long cur = avenidaStudents.getValue();
+                        if (cur != null) avenidaStudents.setValue(cur + passengers);
+                        finishTrain1Ride();
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
+                }
             }
         }, stepMs);
+    }
+    private void finishTrain1Ride() {
+        train1Active.setValue(false);
+        train1Status.setValue("Linia Pobiedziska czeka");
+        train1Progress.setValue(0);
+        rollTeacher();
     }
 
     private void startTrain2Loop() {
@@ -357,6 +401,7 @@ public class GameView {
     private void startTrain2Ride() {
         if (Boolean.TRUE.equals(train2Active.getValue())) return;
         train2Active.setValue(true);
+        train2Outward = true;
         int passengers = getEffectiveTrain2Passengers();
         int stepMs = getEffectiveTrain2StepMs();
         train2Status.setValue("Linia Puszczykowo jedzie...");
@@ -364,17 +409,37 @@ public class GameView {
         handler.postDelayed(new Runnable() {
             int prog = 0;
             @Override public void run() {
-                prog += 10;
-                train2Progress.setValue(prog);
-                if (prog >= 100) {
-                    Long cur = avenidaStudents.getValue();
-                    if (cur != null) avenidaStudents.setValue(cur + passengers);
-                    train2Active.setValue(false);
-                    train2Status.setValue("Z Puszczykowa przyjechało " + passengers + " osób");
-                    rollTeacher();
-                } else handler.postDelayed(this, stepMs);
+                if (train2Outward) {
+                    prog += 10;
+                    if (prog > 100) prog = 100;
+                    train2Progress.setValue(prog);
+                    if (prog >= 100) {
+                        train2Outward = false;
+                        train2Status.setValue("Linia Puszczykowo wraca...");
+                        handler.postDelayed(this, stepMs);
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
+                } else {
+                    prog -= 10;
+                    if (prog < 0) prog = 0;
+                    train2Progress.setValue(prog);
+                    if (prog <= 0) {
+                        Long cur = avenidaStudents.getValue();
+                        if (cur != null) avenidaStudents.setValue(cur + passengers);
+                        finishTrain2Ride();
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
+                }
             }
         }, stepMs);
+    }
+    private void finishTrain2Ride() {
+        train2Active.setValue(false);
+        train2Status.setValue("Linia Pobiedziska czeka");
+        train2Progress.setValue(0);
+        rollTeacher();
     }
 
     private void startTrain3Loop() {
@@ -388,6 +453,7 @@ public class GameView {
     private void startTrain3Ride() {
         if (Boolean.TRUE.equals(train3Active.getValue())) return;
         train3Active.setValue(true);
+        train3Outward = true;
         int passengers = getEffectiveTrain3Passengers();
         int stepMs = getEffectiveTrain3StepMs();
         train3Status.setValue("Linia Opalenica jedzie...");
@@ -395,17 +461,37 @@ public class GameView {
         handler.postDelayed(new Runnable() {
             int prog = 0;
             @Override public void run() {
-                prog += 10;
-                train3Progress.setValue(prog);
-                if (prog >= 100) {
-                    Long cur = avenidaStudents.getValue();
-                    if (cur != null) avenidaStudents.setValue(cur + passengers);
-                    train3Active.setValue(false);
-                    train3Status.setValue("Z Opalenicy przyjechało " + passengers + " osób");
-                    rollTeacher();
-                } else handler.postDelayed(this, stepMs);
+                if (train3Outward) {
+                    prog += 10;
+                    if (prog > 100) prog = 100;
+                    train3Progress.setValue(prog);
+                    if (prog >= 100) {
+                        train3Outward = false;
+                        train3Status.setValue("Linia Opalenica wraca...");
+                        handler.postDelayed(this, stepMs);
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
+                } else {
+                    prog -= 10;
+                    if (prog < 0) prog = 0;
+                    train3Progress.setValue(prog);
+                    if (prog <= 0) {
+                        Long cur = avenidaStudents.getValue();
+                        if (cur != null) avenidaStudents.setValue(cur + passengers);
+                        finishTrain3Ride();
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
+                }
             }
         }, stepMs);
+    }
+    private void finishTrain3Ride() {
+        train3Active.setValue(false);
+        train3Status.setValue("Linia Pobiedziska czeka");
+        train3Progress.setValue(0);
+        rollTeacher();
     }
 
     @Override
