@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         train2Clip = (ClipDrawable) train2Image.getDrawable();
         train3Clip = (ClipDrawable) train3Image.getDrawable();
 
+        Button adButton = findViewById(R.id.ad_button);
+
 
         gm.avenidaStudents.observe(this, val -> avenidaText.setText(String.valueOf(val)));
         gm.schoolStudents.observe(this, val -> schoolText.setText(String.valueOf(val)));
@@ -135,5 +137,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("nbr", 3);
             startActivity(intent);
         });
+
+        adButton.setOnClickListener(v -> startActivity(new Intent(this, AdActivity.class)));
     }
 }
