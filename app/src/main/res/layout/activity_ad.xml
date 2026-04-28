@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/ad_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reklama w postaci obrazka" />
+
+    <ImageView
+        android:id="@+id/ad_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/timer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pozostało: 10 s" />
+
+    <Button
+        android:id="@+id/claim_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Odbierz 5 nauczycieli"
+        android:enabled="false" />
+</LinearLayout>
