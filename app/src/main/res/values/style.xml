@@ -165,7 +165,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/bg_card</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:padding">16dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">20dp</item>
         <item name="android:elevation">4dp</item>
         <item name="android:layout_marginBottom">12dp</item>
     </style>
@@ -193,12 +196,14 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center_vertical</item>
+        <item name="android:baselineAligned">false</item>
         <item name="android:layout_marginBottom">12dp</item>
     </style>
 
     <style name="Card.SectionHeader.Accent">
         <item name="android:layout_width">4dp</item>
-        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_height">22dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
         <item name="android:background">@drawable/bg_section_accent</item>
         <item name="android:layout_marginEnd">10dp</item>
     </style>
@@ -207,9 +212,13 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/text_primary</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:layout_marginEnd">8dp</item>
     </style>
 
     <style name="Card.StatusText">
@@ -307,23 +316,35 @@
     </style>
 
     <style name="Button.Primary.Upgrade">
-        <item name="android:layout_width">120dp</item>
-        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">44dp</item>
         <item name="android:textSize">13sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/btn_primary</item>
         <item name="android:stateListAnimator">@null</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
     </style>
 
     <style name="Button.Primary.Small">
-        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/btn_primary</item>
         <item name="android:stateListAnimator">@null</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
         <item name="android:layout_marginEnd">6dp</item>
     </style>
 
@@ -348,25 +369,39 @@
     </style>
 
     <style name="Button.Secondary.Card">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">44dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/btn_secondary</item>
         <item name="android:stateListAnimator">@null</item>
-        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">14dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
     </style>
 
     <style name="Button.Secondary.Small">
-        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/btn_secondary</item>
         <item name="android:stateListAnimator">@null</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
     </style>
 
     <style name="Button.Ghost">
@@ -389,7 +424,6 @@
         <item name="android:padding">0dp</item>
     </style>
 
-    <!-- Footer -->
     <style name="Footer">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -408,7 +442,6 @@
         <item name="android:paddingBottom">16dp</item>
     </style>
 
-    <!-- Upgrade Styles -->
     <style name="Upgrade">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -447,7 +480,6 @@
         <item name="android:layout_marginEnd">8dp</item>
     </style>
 
-    <!-- Bottom Bar -->
     <style name="BottomBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

@@ -4,48 +4,71 @@
 
     <LinearLayout
         style="@style/Header.Bar"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <LinearLayout
-            style="@style/Header.StatCard"
-            android:layout_marginEnd="8dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
 
-            <TextView
-                style="@style/Header.StatCard.Label"
-                android:text="@string/header_label_avenida" />
+            <LinearLayout
+                style="@style/Header.StatCard"
+                android:layout_marginEnd="8dp">
 
-            <TextView
-                android:id="@+id/avenida_text"
-                style="@style/Header.StatCard.Value"
-                android:text="0" />
+                <TextView
+                    style="@style/Header.StatCard.Label"
+                    android:text="@string/header_label_avenida" />
 
-            <TextView
-                style="@style/Header.StatCard.Unit"
-                android:text="@string/header_students_unit" />
+                <TextView
+                    android:id="@+id/avenida_text"
+                    style="@style/Header.StatCard.Value"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/Header.StatCard.Unit"
+                    android:text="@string/header_students_unit" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Header.StatCard">
+
+                <TextView
+                    style="@style/Header.StatCard.Label"
+                    android:text="@string/header_label_school" />
+
+                <TextView
+                    android:id="@+id/school_text"
+                    style="@style/Header.StatCard.Value"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/Header.StatCard.Unit"
+                    android:text="@string/header_students_unit" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            style="@style/Header.StatCard">
-
-            <TextView
-                style="@style/Header.StatCard.Label"
-                android:text="@string/header_label_school" />
-
-            <TextView
-                android:id="@+id/school_text"
-                style="@style/Header.StatCard.Value"
-                android:text="0" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/teacher_text"
                 style="@style/Header.Counter"
-                android:text="Nauczyciele: 0" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nauczyciele: 0"
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/ad_button"
+                style="@style/Button.Primary.Small"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+5 nauczycieli (reklama)" />
+                android:layout_height="36dp"
+                android:text="+5 nauczycieli 📺" />
         </LinearLayout>
     </LinearLayout>
 
@@ -62,6 +85,65 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/Card.Section">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <View
+                        style="@style/Card.SectionHeader.Accent" />
+
+                    <TextView
+                        style="@style/Card.SectionHeader.Title"
+                        android:text="Pogoda w Poznaniu" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/weather_emoji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="36sp"
+                        android:layout_marginEnd="12dp"
+                        android:text="🌤️" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/weather_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"
+                            android:text="Ładuje pogodę..." />
+
+                        <TextView
+                            android:id="@+id/weather_multiplier"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="@color/text_hint"
+                            android:layout_marginTop="2dp"
+                            android:text="Mnożnik: ×1.0" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 style="@style/Card.Section">
@@ -85,10 +167,11 @@
                 <ImageView
                     android:id="@+id/tram_image"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:src="@drawable/clip_tram"
+                    android:layout_height="100dp"
+                    android:src="@drawable/clip_tram_standard"
                     android:scaleType="fitStart"
-                    android:layout_marginBottom="6dp" />
+                    android:layout_marginBottom="8dp"
+                    android:contentDescription="@string/tram_content_description" />
 
                 <TextView
                     android:id="@+id/tram_status"
@@ -120,10 +203,11 @@
                 <ImageView
                     android:id="@+id/train1_image"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:src="@drawable/clip_train"
+                    android:layout_height="100dp"
+                    android:src="@drawable/clip_train_standard"
                     android:scaleType="fitStart"
-                    android:layout_marginBottom="6dp" />
+                    android:layout_marginBottom="8dp"
+                    android:contentDescription="@string/train_content_description" />
 
                 <TextView
                     android:id="@+id/train_status1"
@@ -156,10 +240,11 @@
                 <ImageView
                     android:id="@+id/train2_image"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:src="@drawable/clip_train"
+                    android:layout_height="100dp"
+                    android:src="@drawable/clip_train_standard"
                     android:scaleType="fitStart"
-                    android:layout_marginBottom="6dp" />
+                    android:layout_marginBottom="8dp"
+                    android:contentDescription="@string/train_content_description" />
 
                 <TextView
                     android:id="@+id/train_status2"
@@ -192,10 +277,11 @@
                 <ImageView
                     android:id="@+id/train3_image"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:src="@drawable/clip_train"
+                    android:layout_height="100dp"
+                    android:src="@drawable/clip_train_standard"
                     android:scaleType="fitStart"
-                    android:layout_marginBottom="6dp" />
+                    android:layout_marginBottom="8dp"
+                    android:contentDescription="@string/train_content_description" />
 
                 <TextView
                     android:id="@+id/train_status3"
