@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/ScreenContainer">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_main">
 
     <LinearLayout
-        style="@style/Header.Bar.WithBack">
+        style="@style/UpgradeHeader">
 
         <Button
             android:id="@+id/back_btn"
-            style="@style/Button.Back"
-            android:text="@string/btn_back"
-            android:contentDescription="@string/nav_back_content_description" />
+            style="@style/BackButton"
+            android:text="@string/btn_back" />
 
         <TextView
-            style="@style/Header.Title.Screen"
+            style="@style/UpgradeHeaderTitle"
             android:text="@string/train_upgrades_title" />
 
         <LinearLayout
@@ -23,12 +25,12 @@
 
             <TextView
                 android:id="@+id/school_count"
-                style="@style/Header.Counter"
+                style="@style/HeaderCounter"
                 android:text="0" />
 
             <TextView
                 android:id="@+id/teacher_count"
-                style="@style/Header.Counter"
+                style="@style/HeaderCounter"
                 android:text="0" />
         </LinearLayout>
     </LinearLayout>
@@ -84,5 +86,4 @@
 
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

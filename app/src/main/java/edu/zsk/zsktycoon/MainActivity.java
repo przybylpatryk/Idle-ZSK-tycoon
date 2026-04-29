@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         gm.avenidaStudents.observe(this, val -> avenidaText.setText(String.valueOf(val)));
         gm.schoolStudents.observe(this, val -> schoolText.setText(String.valueOf(val)));
-        gm.teachers.observe(this, val -> teacherText.setText("Nauczyciele: " + val));
+        gm.teachers.observe(this, val -> teacherText.setText(String.valueOf(val)));
 
         gm.tramProgress.observe(this, val -> {
             ClipDrawable clip = getClipFromImageView(tramImage);

@@ -1,80 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Card.Section">
+    style="@style/UpgradeCard"
+    android:orientation="vertical">
 
     <LinearLayout
-        style="@style/Card.SectionHeader.Row">
+        style="@style/UpgradeCardHeader">
 
         <View
-            style="@style/Card.SectionHeader.Accent"
+            style="@style/UpgradeAccent"
             android:backgroundTint="@color/success" />
 
         <TextView
-            style="@style/Upgrade.SectionTitle"
+            style="@style/UpgradeSectionTitle"
             android:text="@string/train_section_capacity_title" />
     </LinearLayout>
 
     <LinearLayout
-        style="@style/Upgrade.ControlRow"
+        style="@style/UpgradeControlRow"
         android:layout_marginBottom="14dp">
 
         <TextView
             android:id="@+id/train_cap_level"
-            style="@style/Upgrade.LevelText"
+            style="@style/UpgradeLevelText"
             android:text="Poziom 1/5" />
 
         <TextView
             android:id="@+id/train_cap_cost"
-            style="@style/Upgrade.CostText"
+            style="@style/UpgradeCostText"
             android:text="50 uczniów" />
 
         <Button
             android:id="@+id/train_cap_btn"
-            style="@style/Button.Primary.Upgrade"
+            style="@style/UpgradeActionButton"
             android:text="@string/btn_upgrade_capacity" />
     </LinearLayout>
 
     <LinearLayout
-        style="@style/Card.SectionHeader.Row">
+        style="@style/UpgradeCardHeader">
 
         <View
-            style="@style/Card.SectionHeader.Accent"
-            android:backgroundTint="@color/primary" />
+            style="@style/UpgradeAccent"
+            android:backgroundTint="@color/primary_text" />
 
         <TextView
-            style="@style/Upgrade.SectionTitle"
+            style="@style/UpgradeSectionTitle"
             android:text="@string/train_section_speed_title" />
     </LinearLayout>
 
     <LinearLayout
-        style="@style/Upgrade.ControlRow"
+        style="@style/UpgradeControlRow"
         android:layout_marginBottom="16dp">
 
         <TextView
             android:id="@+id/train_spd_level"
-            style="@style/Upgrade.LevelText"
+            style="@style/UpgradeLevelText"
             android:text="Poziom 1/5" />
 
         <TextView
             android:id="@+id/train_spd_cost"
-            style="@style/Upgrade.CostText"
+            style="@style/UpgradeCostText"
             android:text="50 uczniów" />
 
         <Button
             android:id="@+id/train_spd_btn"
-            style="@style/Button.Primary.Upgrade"
+            style="@style/UpgradeActionButton"
             android:text="@string/btn_upgrade_speed" />
     </LinearLayout>
 
     <LinearLayout
-        style="@style/Card.SectionHeader.Row"
+        style="@style/UpgradeCardHeader"
         android:layout_marginBottom="10dp">
 
         <View
-            style="@style/Card.SectionHeader.Accent" />
+            style="@style/UpgradeAccent" />
 
         <TextView
-            style="@style/Upgrade.SectionTitle"
+            style="@style/UpgradeSectionTitle"
             android:text="@string/train_section_models_title" />
     </LinearLayout>
 
@@ -83,5 +84,4 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" />
-
 </LinearLayout>

@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Chip.ModelItem">
+    style="@style/ModelItem">
 
     <LinearLayout
-        style="@style/Chip.ModelItem.TextSection">
+        style="@style/ModelItemTextSection">
 
         <TextView
             android:id="@+id/model_name"
-            style="@style/Chip.ModelItem.Name"
+            style="@style/ModelItemName"
             android:text="Model" />
 
         <TextView
             android:id="@+id/model_desc"
-            style="@style/Chip.ModelItem.Desc"
+            style="@style/ModelItemDesc"
             android:text="Opis modelu" />
     </LinearLayout>
 
     <Button
         android:id="@+id/model_buy"
-        style="@style/Button.Primary.Small"
+        style="@style/ModelBuyButton"
         android:text="@string/model_btn_buy" />
 
     <Button
         android:id="@+id/model_select"
-        style="@style/Button.Secondary.Small"
+        style="@style/ModelSelectButton"
         android:text="@string/model_btn_select" />
-
 </LinearLayout>

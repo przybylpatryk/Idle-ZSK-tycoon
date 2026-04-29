@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/ScreenContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_main"
     android:gravity="center_horizontal">
 
     <LinearLayout
-        style="@style/Header.Bar"
+        style="@style/RewardHeader"
         android:gravity="center">
 
         <TextView
-            style="@style/Header.Title"
+            style="@style/HeaderTitle"
             android:text="Reklama" />
     </LinearLayout>
 
@@ -19,38 +22,29 @@
         android:orientation="vertical"
         android:gravity="center"
         android:paddingHorizontal="16dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp">
+        android:paddingVertical="16dp">
 
         <LinearLayout
-            style="@style/Card.Section">
+            style="@style/UpgradeCard"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/ad_image"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:scaleType="fitCenter"
-                android:contentDescription="Reklama"
                 android:layout_marginBottom="12dp" />
 
             <TextView
                 android:id="@+id/timer_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pozostało: 10 s"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary"
-                android:gravity="center"
-                android:layout_marginBottom="16dp" />
+                style="@style/TimerText"
+                android:text="Pozostało: 10 s" />
 
             <Button
                 android:id="@+id/claim_button"
-                style="@style/Button.Primary.Large"
+                style="@style/ClaimButton"
                 android:text="Odbierz 5 nauczycieli"
                 android:enabled="false" />
         </LinearLayout>
-
     </LinearLayout>
-
 </LinearLayout>

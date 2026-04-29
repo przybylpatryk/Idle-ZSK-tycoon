@@ -1,305 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/ScreenContainer">
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background_main">
 
     <LinearLayout
-        style="@style/Header.Bar"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
-
-            <LinearLayout
-                style="@style/Header.StatCard"
-                android:layout_marginEnd="8dp">
-
-                <TextView
-                    style="@style/Header.StatCard.Label"
-                    android:text="@string/header_label_avenida" />
-
-                <TextView
-                    android:id="@+id/avenida_text"
-                    style="@style/Header.StatCard.Value"
-                    android:text="0" />
-
-                <TextView
-                    style="@style/Header.StatCard.Unit"
-                    android:text="@string/header_students_unit" />
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/Header.StatCard">
-
-                <TextView
-                    style="@style/Header.StatCard.Label"
-                    android:text="@string/header_label_school" />
-
-                <TextView
-                    android:id="@+id/school_text"
-                    style="@style/Header.StatCard.Value"
-                    android:text="0" />
-
-                <TextView
-                    style="@style/Header.StatCard.Unit"
-                    android:text="@string/header_students_unit" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/teacher_text"
-                style="@style/Header.Counter"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Nauczyciele: 0"
-                android:textSize="14sp" />
-
-            <Button
-                android:id="@+id/ad_button"
-                style="@style/Button.Primary.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:text="+5 nauczycieli 📺" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="8dp"
-        android:clipToPadding="false">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/HeaderCard"
             android:orientation="vertical">
 
             <LinearLayout
-                style="@style/Card.Section">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="12dp">
-
-                    <View
-                        style="@style/Card.SectionHeader.Accent" />
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <TextView
-                        style="@style/Card.SectionHeader.Title"
-                        android:text="Pogoda w Poznaniu" />
+                        style="@style/HeaderLabel"
+                        android:text="@string/header_label_school" />
+
+                    <TextView
+                        android:id="@+id/school_text"
+                        style="@style/HeaderValue"
+                        android:text="0" />
+
+                    <TextView
+                        style="@style/HeaderUnit"
+                        android:text="@string/header_students_unit" />
                 </LinearLayout>
 
+                <View style="@style/DividerVertical" />
+
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <TextView
-                        android:id="@+id/weather_emoji"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="36sp"
-                        android:layout_marginEnd="12dp"
-                        android:text="🌤️" />
+                        style="@style/HeaderLabel"
+                        android:text="@string/header_label_teachers" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/weather_description"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/text_primary"
-                            android:text="Ładuje pogodę..." />
-
-                        <TextView
-                            android:id="@+id/weather_multiplier"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12sp"
-                            android:textColor="@color/text_hint"
-                            android:layout_marginTop="2dp"
-                            android:text="Mnożnik: ×1.0" />
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/teacher_text"
+                        style="@style/HeaderValue"
+                        android:text="0" />
                 </LinearLayout>
             </LinearLayout>
 
+            <Button
+                android:id="@+id/ad_button"
+                style="@style/AdButton"
+                android:text="+5 🎓" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/WeatherCard">
             <LinearLayout
-                style="@style/Card.Section">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/weather_emoji"
+                    style="@style/WeatherEmoji"
+                    android:text="🌤️" />
 
                 <LinearLayout
-                    style="@style/Card.SectionHeader.Row">
-
-                    <View
-                        style="@style/Card.SectionHeader.Accent" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp">
 
                     <TextView
-                        style="@style/Card.SectionHeader.Title"
-                        android:text="@string/tram_section_title" />
+                        android:id="@+id/weather_description"
+                        style="@style/WeatherDesc"
+                        android:text="@string/weather_loading" />
 
-                    <Button
-                        android:id="@+id/tram_upgrade_btn"
-                        style="@style/Button.Secondary.Card"
-                        android:text="@string/tram_btn_upgrades" />
+                    <TextView
+                        android:id="@+id/weather_multiplier"
+                        style="@style/WeatherMultiplier"
+                        android:text="@string/weather_multiplier_default" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/TramCard">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/avenida_icon"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/avenida" />
+
+                    <TextView
+                        android:id="@+id/avenida_text"
+                        style="@style/AvenidaValue"
+                        android:text="0" />
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/tram_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="80dp"
                     android:src="@drawable/clip_tram_standard"
-                    android:scaleType="fitStart"
-                    android:layout_marginBottom="8dp"
-                    android:contentDescription="@string/tram_content_description" />
-
-                <TextView
-                    android:id="@+id/tram_status"
-                    style="@style/Card.StatusText"
-                    android:text="@string/tram_status_waiting" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/train1_card"
-                style="@style/Card.Section">
-
-                <LinearLayout
-                    style="@style/Card.SectionHeader.Row">
-
-                    <View
-                        style="@style/Card.SectionHeader.Accent"
-                        android:backgroundTint="@color/success" />
-
-                    <TextView
-                        style="@style/Card.SectionHeader.Title"
-                        android:text="@string/train_line_1_title" />
-
-                    <Button
-                        android:id="@+id/train1_upgrade_btn"
-                        style="@style/Button.Secondary.Card"
-                        android:text="@string/train_btn_upgrades" />
-                </LinearLayout>
+                    android:scaleType="fitCenter" />
 
                 <ImageView
-                    android:id="@+id/train1_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:src="@drawable/clip_train_standard"
-                    android:scaleType="fitStart"
-                    android:layout_marginBottom="8dp"
-                    android:contentDescription="@string/train_content_description" />
-
-                <TextView
-                    android:id="@+id/train_status1"
-                    style="@style/Card.StatusText"
-                    android:text="@string/train_status_waiting" />
+                    android:id="@+id/school_icon"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="48dp"
+                    android:src="@drawable/zsk"
+                    android:scaleType="fitCenter" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/train2_card"
-                style="@style/Card.Section"
-                android:visibility="gone">
+            <TextView
+                android:id="@+id/tram_status"
+                style="@style/StatusText"
+                android:text="@string/tram_status_waiting" />
 
-                <LinearLayout
-                    style="@style/Card.SectionHeader.Row">
-
-                    <View
-                        style="@style/Card.SectionHeader.Accent"
-                        android:backgroundTint="@color/success" />
-
-                    <TextView
-                        style="@style/Card.SectionHeader.Title"
-                        android:text="@string/train_line_2_title" />
-
-                    <Button
-                        android:id="@+id/train2_upgrade_btn"
-                        style="@style/Button.Secondary.Card"
-                        android:text="@string/train_btn_upgrades" />
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/train2_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:src="@drawable/clip_train_standard"
-                    android:scaleType="fitStart"
-                    android:layout_marginBottom="8dp"
-                    android:contentDescription="@string/train_content_description" />
-
-                <TextView
-                    android:id="@+id/train_status2"
-                    style="@style/Card.StatusText"
-                    android:text="@string/train_line_locked" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/train3_card"
-                style="@style/Card.Section"
-                android:visibility="gone">
-
-                <LinearLayout
-                    style="@style/Card.SectionHeader.Row">
-
-                    <View
-                        style="@style/Card.SectionHeader.Accent"
-                        android:backgroundTint="@color/success" />
-
-                    <TextView
-                        style="@style/Card.SectionHeader.Title"
-                        android:text="@string/train_line_3_title" />
-
-                    <Button
-                        android:id="@+id/train3_upgrade_btn"
-                        style="@style/Button.Secondary.Card"
-                        android:text="@string/train_btn_upgrades" />
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/train3_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:src="@drawable/clip_train_standard"
-                    android:scaleType="fitStart"
-                    android:layout_marginBottom="8dp"
-                    android:contentDescription="@string/train_content_description" />
-
-                <TextView
-                    android:id="@+id/train_status3"
-                    style="@style/Card.StatusText"
-                    android:text="@string/train_line_locked" />
-            </LinearLayout>
-
-            <View android:layout_width="match_parent" android:layout_height="8dp" />
+            <Button
+                android:id="@+id/tram_upgrade_btn"
+                style="@style/CardButton"
+                android:text="@string/tram_btn_upgrades" />
         </LinearLayout>
-    </ScrollView>
 
-    <LinearLayout
-        style="@style/BottomBar">
+        <LinearLayout
+            android:id="@+id/train1_card"
+            style="@style/TrainCard">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/TrainTitle"
+                    android:text="@string/train_line_1_title" />
+
+                <View style="@style/Spacer" />
+
+                <Button
+                    android:id="@+id/train1_upgrade_btn"
+                    style="@style/CardButton"
+                    android:text="@string/train_btn_upgrades" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/train1_image"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:src="@drawable/clip_train_standard"
+                android:scaleType="fitStart" />
+
+            <TextView
+                android:id="@+id/train_status1"
+                style="@style/StatusText"
+                android:text="@string/train_status_waiting" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/train2_card"
+            style="@style/TrainCard"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/TrainTitle"
+                    android:text="@string/train_line_2_title" />
+
+                <View style="@style/Spacer" />
+
+                <Button
+                    android:id="@+id/train2_upgrade_btn"
+                    style="@style/CardButton"
+                    android:text="@string/train_btn_upgrades" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/train2_image"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:src="@drawable/clip_train_standard"
+                android:scaleType="fitStart" />
+
+            <TextView
+                android:id="@+id/train_status2"
+                style="@style/StatusText"
+                android:text="@string/train_line_locked" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/train3_card"
+            style="@style/TrainCard"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/TrainTitle"
+                    android:text="@string/train_line_3_title" />
+
+                <View style="@style/Spacer" />
+
+                <Button
+                    android:id="@+id/train3_upgrade_btn"
+                    style="@style/CardButton"
+                    android:text="@string/train_btn_upgrades" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/train3_image"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:src="@drawable/clip_train_standard"
+                android:scaleType="fitStart" />
+
+            <TextView
+                android:id="@+id/train_status3"
+                style="@style/StatusText"
+                android:text="@string/train_line_locked" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/new_train_btn"
-            style="@style/Button.Primary.Standard"
+            style="@style/NewTrainButton"
             android:text="@string/btn_buy_new_line" />
-    </LinearLayout>
 
-</LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

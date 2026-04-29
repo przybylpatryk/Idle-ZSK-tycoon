@@ -1,189 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <style name="Theme.ZSKTycoon" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/primary_dark</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/accent</item>
-        <item name="colorOnSecondary">@color/white</item>
-        <item name="android:windowBackground">@color/background</item>
-        <item name="android:statusBarColor">@color/primary_dark</item>
-        <item name="android:navigationBarColor">@color/primary_dark</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorPrimaryVariant">@color/accent_dark</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">@color/success</item>
+        <item name="colorSecondaryVariant">@color/success</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="android:statusBarColor">@color/background_main</item>
+        <item name="android:windowBackground">@color/background_main</item>
     </style>
 
-
-    <style name="ScreenContainer">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:background">@color/background</item>
-    </style>
-
-
-    <style name="Header">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/bg_header</item>
-        <item name="android:padding">16dp</item>
-        <item name="android:paddingBottom">24dp</item>
-    </style>
-
-    <style name="Header.Bar">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/bg_header</item>
-        <item name="android:padding">16dp</item>
-        <item name="android:paddingBottom">24dp</item>
-    </style>
-
-    <style name="Header.Bar.Menu">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">220dp</item>
-        <item name="android:background">@drawable/bg_header</item>
-        <item name="android:gravity">center</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:paddingBottom">32dp</item>
-    </style>
-
-    <style name="Header.Bar.WithBack">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/bg_header</item>
-        <item name="android:orientation">horizontal</item>
-        <item name="android:padding">16dp</item>
-        <item name="android:paddingBottom">24dp</item>
-        <item name="android:gravity">center_vertical</item>
-    </style>
-
-
-    <style name="Header.Counter">
+    <style name="HeaderTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/text_light</item>
-    </style>
-
-    <style name="Header.Counter.Students">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/text_light</item>
-    </style>
-
-    <style name="Header.Counter.Teachers">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/text_light</item>
-    </style>
-
-
-    <style name="Header.StatCard">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:background">@drawable/bg_card</item>
-        <item name="android:alpha">0.95</item>
-        <item name="android:padding">10dp</item>
-    </style>
-
-    <style name="Header.StatCard.Label">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">10sp</item>
-        <item name="android:textColor">@color/text_hint</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:letterSpacing">0.08</item>
+        <item name="android:textColor">@color/primary_text</item>
     </style>
 
-    <style name="Header.StatCard.Value">
+    <style name="HeaderCounter">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">22sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/primary_dark</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/secondary_text</item>
     </style>
 
-    <style name="Header.StatCard.Unit">
+    <style name="BackButton">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">10sp</item>
-        <item name="android:textColor">@color/text_hint</item>
-    </style>
-
-
-    <style name="Header.Title">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">28sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="Header.Title.AppName">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">28sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:letterSpacing">0.15</item>
-        <item name="android:layout_marginTop">8dp</item>
-    </style>
-
-    <style name="Header.Title.Subtitle">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">13sp</item>
-        <item name="android:textColor">@color/text_light</item>
-        <item name="android:layout_marginTop">4dp</item>
-    </style>
-
-    <style name="Header.Title.Screen">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:layout_marginStart">8dp</item>
-    </style>
-
-
-    <style name="Card">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/bg_card</item>
-        <item name="android:elevation">4dp</item>
-        <item name="android:layout_marginBottom">12dp</item>
-    </style>
-
-    <style name="Card.Section">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/bg_card</item>
-        <item name="android:orientation">vertical</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:backgroundTint">@color/divider</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:paddingBottom">20dp</item>
-        <item name="android:elevation">4dp</item>
-        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:radius">20dp</item>
     </style>
 
-    <style name="Card.Section.Last">
+    <!-- EKRAN REKLAMY -->
+    <style name="RewardHeader">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/bg_card</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:padding">16dp</item>
-        <item name="android:elevation">4dp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:background">@color/card_background</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+
+    <style name="TimerText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:gravity">center</item>
         <item name="android:layout_marginBottom">16dp</item>
     </style>
 
-    <style name="Card.SectionHeader">
+    <style name="ClaimButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:backgroundTint">@color/success</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:radius">24dp</item>
+    </style>
+
+    <!-- EKRAN MENU -->
+    <style name="MenuHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">32dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:background">@color/card_background</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+
+    <style name="MenuAppName">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/accent</item>
+    </style>
+
+    <style name="MenuSubtitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:layout_marginTop">4dp</item>
+    </style>
+
+    <style name="MenuPrimaryButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:backgroundTint">@color/accent</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:radius">26dp</item>
+    </style>
+
+    <style name="MenuSecondaryButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:backgroundTint">@color/card_background</item>
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:radius">26dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+
+    <style name="MenuGhostButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="FooterVersion">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/secondary_text</item>
+    </style>
+
+    <!-- WSPÓLNE DLA EKRANÓW UPGRADE -->
+    <style name="UpgradeHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingVertical">12dp</item>
+        <item name="android:background">@color/card_background</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+
+    <style name="UpgradeHeaderTitle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="UpgradeCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/card_background</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:radius">16dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="UpgradeCardHeader">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
@@ -191,302 +172,280 @@
         <item name="android:layout_marginBottom">12dp</item>
     </style>
 
-    <style name="Card.SectionHeader.Row">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:orientation">horizontal</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:baselineAligned">false</item>
-        <item name="android:layout_marginBottom">12dp</item>
-    </style>
-
-    <style name="Card.SectionHeader.Accent">
+    <style name="UpgradeAccent">
         <item name="android:layout_width">4dp</item>
-        <item name="android:layout_height">22dp</item>
-        <item name="android:layout_gravity">center_vertical</item>
-        <item name="android:background">@drawable/bg_section_accent</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:background">@color/accent</item>
+        <item name="android:radius">2dp</item>
         <item name="android:layout_marginEnd">10dp</item>
     </style>
 
-    <style name="Card.SectionHeader.Title">
+    <style name="UpgradeSectionTitle">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_gravity">center_vertical</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/text_primary</item>
-        <item name="android:maxLines">2</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:layout_marginEnd">8dp</item>
-    </style>
-
-    <style name="Card.StatusText">
-        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/text_secondary</item>
-    </style>
-
-    <style name="Card.PassengerText">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">11sp</item>
-        <item name="android:textColor">@color/text_hint</item>
-    </style>
-
-
-    <style name="Chip">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/bg_chip</item>
-        <item name="android:padding">12dp</item>
-        <item name="android:layout_marginBottom">8dp</item>
-    </style>
-
-    <style name="Chip.ModelItem">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:orientation">horizontal</item>
-        <item name="android:background">@drawable/bg_chip</item>
-        <item name="android:padding">12dp</item>
-        <item name="android:layout_marginBottom">8dp</item>
-        <item name="android:gravity">center_vertical</item>
-    </style>
-
-    <style name="Chip.ModelItem.TextSection">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:layout_marginEnd">8dp</item>
-    </style>
-
-    <style name="Chip.ModelItem.Name">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/text_primary</item>
-    </style>
-
-    <style name="Chip.ModelItem.Desc">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/text_secondary</item>
-    </style>
-
-    <style name="Button">
-        <item name="android:layout_height">44dp</item>
-        <item name="android:textSize">13sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:stateListAnimator">@null</item>
-    </style>
-
-    <style name="Button.Primary">
-        <item name="android:layout_height">44dp</item>
-        <item name="android:textSize">13sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/btn_primary</item>
-        <item name="android:stateListAnimator">@null</item>
-    </style>
-
-    <style name="Button.Primary.Large">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">56dp</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/btn_primary</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="android:letterSpacing">0.08</item>
+        <item name="android:textColor">@color/primary_text</item>
     </style>
 
-    <style name="Button.Primary.Standard">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">48dp</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/btn_primary</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="android:layout_marginBottom">8dp</item>
-    </style>
-
-    <style name="Button.Primary.Upgrade">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">44dp</item>
-        <item name="android:textSize">13sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/btn_primary</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
-        <item name="android:minWidth">0dp</item>
-        <item name="android:minHeight">0dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-    </style>
-
-    <style name="Button.Primary.Small">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">36dp</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/btn_primary</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="android:paddingStart">12dp</item>
-        <item name="android:paddingEnd">12dp</item>
-        <item name="android:minWidth">0dp</item>
-        <item name="android:minHeight">0dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:layout_marginEnd">6dp</item>
-    </style>
-
-    <style name="Button.Secondary">
-        <item name="android:layout_height">44dp</item>
-        <item name="android:textSize">13sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:background">@drawable/btn_secondary</item>
-        <item name="android:stateListAnimator">@null</item>
-    </style>
-
-    <style name="Button.Secondary.Large">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">56dp</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/btn_secondary</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="android:layout_marginTop">14dp</item>
-    </style>
-
-    <style name="Button.Secondary.Card">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:layout_gravity">center_vertical</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/btn_secondary</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="android:paddingStart">14dp</item>
-        <item name="android:paddingEnd">14dp</item>
-        <item name="android:paddingTop">0dp</item>
-        <item name="android:paddingBottom">0dp</item>
-        <item name="android:minWidth">0dp</item>
-        <item name="android:minHeight">0dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-    </style>
-
-    <style name="Button.Secondary.Small">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">36dp</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/btn_secondary</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="android:paddingStart">12dp</item>
-        <item name="android:paddingEnd">12dp</item>
-        <item name="android:minWidth">0dp</item>
-        <item name="android:minHeight">0dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-    </style>
-
-    <style name="Button.Ghost">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">48dp</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/text_hint</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="android:layout_marginTop">20dp</item>
-    </style>
-
-    <style name="Button.Back">
-        <item name="android:layout_width">40dp</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="android:padding">0dp</item>
-    </style>
-
-    <style name="Footer">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">11sp</item>
-        <item name="android:textColor">@color/text_hint</item>
-        <item name="android:gravity">center</item>
-        <item name="android:paddingBottom">16dp</item>
-    </style>
-
-    <style name="Footer.VersionText">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">11sp</item>
-        <item name="android:textColor">@color/text_hint</item>
-        <item name="android:gravity">center</item>
-        <item name="android:paddingBottom">16dp</item>
-    </style>
-
-    <style name="Upgrade">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:orientation">vertical</item>
-    </style>
-
-    <style name="Upgrade.SectionTitle">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/text_primary</item>
-    </style>
-
-    <style name="Upgrade.ControlRow">
+    <style name="UpgradeControlRow">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginBottom">8dp</item>
     </style>
 
-    <style name="Upgrade.LevelText">
+    <style name="UpgradeLevelText">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textColor">@color/primary_text</item>
     </style>
 
-    <style name="Upgrade.CostText">
+    <style name="UpgradeCostText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:layout_marginEnd">12dp</item>
+    </style>
+
+    <style name="UpgradeActionButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:backgroundTint">@color/accent</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:radius">18dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+
+    <!-- ITEM MODEL -->
+    <style name="ModelItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:background">@color/divider</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:radius">12dp</item>
+    </style>
+
+    <style name="ModelItemTextSection">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="ModelItemName">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="ModelItemDesc">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/accent</item>
+        <item name="android:textColor">@color/secondary_text</item>
+    </style>
+
+    <style name="ModelBuyButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:backgroundTint">@color/success</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:radius">16dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
         <item name="android:layout_marginEnd">8dp</item>
     </style>
 
-    <style name="BottomBar">
+    <style name="ModelSelectButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:backgroundTint">@color/accent</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:radius">16dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+    </style>
+
+    <!-- STYLE Z WCZEŚNIEJSZYCH EKRANÓW (activity_main) -->
+    <style name="HeaderCard">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/card_background</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:radius">16dp</item>
+    </style>
+
+    <style name="HeaderLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="HeaderValue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:layout_marginTop">4dp</item>
+    </style>
+
+    <style name="HeaderUnit">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/secondary_text</item>
+    </style>
+
+    <style name="DividerVertical">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@color/divider</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+    </style>
+
+    <style name="AdButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:backgroundTint">@color/accent</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:radius">12dp</item>
+    </style>
+
+    <style name="WeatherCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/card_background</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:radius">16dp</item>
+    </style>
+
+    <style name="WeatherEmoji">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:background">#F1F5F9</item>
+        <item name="android:radius">28dp</item>
+    </style>
+
+    <style name="WeatherDesc">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="WeatherMultiplier">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:layout_marginTop">4dp</item>
+    </style>
+
+    <style name="TramCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/card_background</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:radius">16dp</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:background">@color/white</item>
-        <item name="android:elevation">12dp</item>
-        <item name="android:padding">12dp</item>
+    </style>
+
+    <style name="AvenidaValue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:layout_marginTop">4dp</item>
+    </style>
+
+    <style name="TrainCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/card_background</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:radius">16dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="TrainTitle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/accent</item>
+    </style>
+
+    <style name="StatusText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
+
+    <style name="CardButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:backgroundTint">#EFF6FF</item>
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:radius">18dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+
+    <style name="Spacer">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="NewTrainButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:backgroundTint">@color/success</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:radius">26dp</item>
     </style>
 
 </resources>

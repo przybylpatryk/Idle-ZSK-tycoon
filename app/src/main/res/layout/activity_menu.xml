@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/ScreenContainer">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_main">
 
     <LinearLayout
-        style="@style/Header.Bar.Menu">
+        style="@style/MenuHeader"
+        android:orientation="vertical"
+        android:gravity="center">
 
         <TextView
-            style="@style/Header.Title.AppName"
+            style="@style/MenuAppName"
             android:text="@string/app_name" />
 
         <TextView
-            style="@style/Header.Title.Subtitle"
+            style="@style/MenuSubtitle"
             android:text="@string/app_subtitle" />
     </LinearLayout>
 
@@ -21,32 +26,30 @@
         android:orientation="vertical"
         android:gravity="center"
         android:paddingHorizontal="32dp"
-        android:paddingTop="24dp"
-        android:paddingBottom="24dp">
+        android:paddingVertical="24dp">
 
         <Button
             android:id="@+id/btn_play"
-            style="@style/Button.Primary.Large"
+            style="@style/MenuPrimaryButton"
             android:text="@string/menu_btn_play" />
 
         <Button
             android:id="@+id/btn_tram_upgrade"
-            style="@style/Button.Secondary.Large"
+            style="@style/MenuSecondaryButton"
             android:text="@string/menu_btn_tram_upgrades" />
 
         <Button
             android:id="@+id/btn_train_upgrade"
-            style="@style/Button.Secondary.Large"
+            style="@style/MenuSecondaryButton"
             android:text="@string/menu_btn_train_upgrades" />
 
         <Button
             android:id="@+id/btn_exit"
-            style="@style/Button.Ghost"
+            style="@style/MenuGhostButton"
             android:text="@string/menu_btn_exit" />
     </LinearLayout>
 
     <TextView
-        style="@style/Footer.VersionText"
+        style="@style/FooterVersion"
         android:text="@string/app_version" />
-
 </LinearLayout>

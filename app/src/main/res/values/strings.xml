@@ -96,4 +96,7 @@
     <string name="icon_capacity_desc">Pojemność</string>
     <string name="icon_speed_desc">Prędkość</string>
     <string name="icon_logo_desc">Logo ZSK Tycoon</string>
+    <string name="header_label_teachers">Nauczyciele</string>
+    <string name="weather_loading">Ładuje pogodę...</string>
+    <string name="weather_multiplier_default">x1.00</string>
 </resources>
