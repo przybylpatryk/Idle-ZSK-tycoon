@@ -21,20 +21,24 @@ public class GameView {
     public MutableLiveData<Integer> tramProgress = new MutableLiveData<>(0);
     public MutableLiveData<String> tramStatus = new MutableLiveData<>("Tramwaj czeka");
     public MutableLiveData<Boolean> tramActive = new MutableLiveData<>(false);
+    private boolean tramOutward = true;
 
     public MutableLiveData<Integer> train1Progress = new MutableLiveData<>(0);
     public MutableLiveData<String> train1Status = new MutableLiveData<>("Linia Pobiedziska czeka");
     public MutableLiveData<Boolean> train1Active = new MutableLiveData<>(false);
+    private boolean train1Outward = true;
 
     public MutableLiveData<Integer> train2Progress = new MutableLiveData<>(0);
     public MutableLiveData<String> train2Status = new MutableLiveData<>("Linia Puszczykowo (zablokowana)");
     public MutableLiveData<Boolean> train2Active = new MutableLiveData<>(false);
     public MutableLiveData<Boolean> train2Owned = new MutableLiveData<>(false);
+    private boolean train2Outward = true;
 
     public MutableLiveData<Integer> train3Progress = new MutableLiveData<>(0);
     public MutableLiveData<String> train3Status = new MutableLiveData<>("Linia Opalenica (zablokowana)");
     public MutableLiveData<Boolean> train3Active = new MutableLiveData<>(false);
     public MutableLiveData<Boolean> train3Owned = new MutableLiveData<>(false);
+    private boolean train3Outward = true;
 
     public MutableLiveData<Long> nextTrainCost = new MutableLiveData<>(50L);
     public MutableLiveData<Integer> ownedTrainsCount = new MutableLiveData<>(1);
@@ -48,14 +52,14 @@ public class GameView {
     public MutableLiveData<Integer> train3CapacityLevel = new MutableLiveData<>(1);
     public MutableLiveData<Integer> train3SpeedLevel = new MutableLiveData<>(1);
 
-    public MutableLiveData<String> activeTramModel = new MutableLiveData<>("standard");
-    public MutableLiveData<Set<String>> ownedTramModels = new MutableLiveData<>(new HashSet<>(Collections.singleton("standard")));
-    public MutableLiveData<String> activeTrain1Model = new MutableLiveData<>("standard");
-    public MutableLiveData<Set<String>> ownedTrain1Models = new MutableLiveData<>(new HashSet<>(Collections.singleton("standard")));
-    public MutableLiveData<String> activeTrain2Model = new MutableLiveData<>("standard");
-    public MutableLiveData<Set<String>> ownedTrain2Models = new MutableLiveData<>(new HashSet<>(Collections.singleton("standard")));
-    public MutableLiveData<String> activeTrain3Model = new MutableLiveData<>("standard");
-    public MutableLiveData<Set<String>> ownedTrain3Models = new MutableLiveData<>(new HashSet<>(Collections.singleton("standard")));
+    public MutableLiveData<String> activeTramModel = new MutableLiveData<>("Standardowy");
+    public MutableLiveData<Set<String>> ownedTramModels = new MutableLiveData<>(new HashSet<>(Collections.singleton("Standardowy")));
+    public MutableLiveData<String> activeTrain1Model = new MutableLiveData<>("standardowy");
+    public MutableLiveData<Set<String>> ownedTrain1Models = new MutableLiveData<>(new HashSet<>(Collections.singleton("standardowy")));
+    public MutableLiveData<String> activeTrain2Model = new MutableLiveData<>("standardowy");
+    public MutableLiveData<Set<String>> ownedTrain2Models = new MutableLiveData<>(new HashSet<>(Collections.singleton("standardowy")));
+    public MutableLiveData<String> activeTrain3Model = new MutableLiveData<>("standardowy");
+    public MutableLiveData<Set<String>> ownedTrain3Models = new MutableLiveData<>(new HashSet<>(Collections.singleton("standardowy")));
 
     public static final List<VehicleModel> TRAM_MODELS = Arrays.asList(
             new VehicleModel("Standardowy", "Standardowy", "Brak bonusów", 1.0f, 1.0f, 0),
@@ -65,11 +69,15 @@ public class GameView {
     );
 
     public static final List<VehicleModel> TRAIN_MODELS = Arrays.asList(
-            new VehicleModel("standardowy", "Standardowy", "Brak bonusów", 1.0f, 1.0f, 0),
-            new VehicleModel("Polregio", "Polregio", "+50% prędkości", 1.5f, 1.0f, 60),
-            new VehicleModel("KW", "KW", "+60% pojemności", 1.0f, 1.6f, 90),
+            new VehicleModel("standardowy", "Standardowy", "Podstawowy model pociągu", 1.0f, 1.0f, 0),
+            new VehicleModel("KW", "Koleje Wielkopolskie", "+60% pojemności", 1.0f, 1.6f, 60),
+            new VehicleModel("Polregio", "Polregio", "+50% prędkości", 1.5f, 1.0f, 90),
             new VehicleModel("Intercity", "Intercity", "+40% prędkości i +40% pojemności", 1.4f, 1.4f, 120)
     );
+
+    public MutableLiveData<Float> weatherMultiplier = new MutableLiveData<>(1.0f);
+    public MutableLiveData<String> weatherDescription = new MutableLiveData<>("Ładuje pogodę...");
+    public MutableLiveData<String> weatherEmoji = new MutableLiveData<>("🌤️");
 
     private static final int MAX_UPGRADE_LEVEL = 5;
     private static final long UPGRADE_BASE_COST = 50;
@@ -82,7 +90,39 @@ public class GameView {
     private GameView() {
         startTrain1Loop();
         startTramLoop();
+        refreshWeather();
     }
+
+    private void refreshWeather() {
+        WeatherService.fetchWeatherMultiplier((multiplier, description, emoji) -> {
+            weatherMultiplier.setValue(multiplier);
+            weatherDescription.setValue(description);
+            weatherEmoji.setValue(emoji);
+        });
+        handler.postDelayed(this::refreshWeather, 10 * 60 * 1000);
+    }
+
+    public int getTramDrawableRes(String modelId) {
+        if (modelId == null) return R.drawable.ic_tram_standard;
+        switch (modelId) {
+            case "10": return R.drawable.ic_tram_10;
+            case "17": return R.drawable.ic_tram_17;
+            case "5":  return R.drawable.ic_tram_5;
+            default:   return R.drawable.ic_tram_standard;
+        }
+    }
+
+    public int getTrainDrawableRes(String modelId) {
+        if (modelId == null) return R.drawable.ic_train_standard;
+        switch (modelId) {
+            case "KW":        return R.drawable.ic_train_kw;
+            case "Polregio":  return R.drawable.ic_train_polregio;
+            case "Intercity": return R.drawable.ic_train_intercity;
+            default:          return R.drawable.ic_train_standard;
+        }
+    }
+
+
 
     public int getTramCapacity() {
         Integer lvl = tramCapacityLevel.getValue();
@@ -136,7 +176,7 @@ public class GameView {
 
     private Set<String> getOwnedSet(String vehicle) {
         switch (vehicle) {
-            case "tram": return ownedTramModels.getValue();
+            case "tram":   return ownedTramModels.getValue();
             case "train1": return ownedTrain1Models.getValue();
             case "train2": return ownedTrain2Models.getValue();
             case "train3": return ownedTrain3Models.getValue();
@@ -176,38 +216,42 @@ public class GameView {
         int step = getTramStepMs();
         VehicleModel model = getModelById("tram", activeTramModel.getValue());
         if (model != null) step = (int)(step / model.speedMul);
-        return Math.max(80, step);
+        Float wm = weatherMultiplier.getValue();
+        return Math.max(80, (int)(step * (wm != null ? wm : 1.0f)));
     }
 
     public int getEffectiveTrain1StepMs() {
         int step = getTrain1StepMs();
         VehicleModel model = getModelById("train1", activeTrain1Model.getValue());
         if (model != null) step = (int)(step / model.speedMul);
-        return Math.max(100, step);
+        Float wm = weatherMultiplier.getValue();
+        return Math.max(100, (int)(step * (wm != null ? wm : 1.0f)));
     }
 
     public int getEffectiveTrain2StepMs() {
         int step = getTrain2StepMs();
         VehicleModel model = getModelById("train2", activeTrain2Model.getValue());
         if (model != null) step = (int)(step / model.speedMul);
-        return Math.max(140, step);
+        Float wm = weatherMultiplier.getValue();
+        return Math.max(140, (int)(step * (wm != null ? wm : 1.0f)));
     }
 
     public int getEffectiveTrain3StepMs() {
         int step = getTrain3StepMs();
         VehicleModel model = getModelById("train3", activeTrain3Model.getValue());
         if (model != null) step = (int)(step / model.speedMul);
-        return Math.max(200, step);
+        Float wm = weatherMultiplier.getValue();
+        return Math.max(200, (int)(step * (wm != null ? wm : 1.0f)));
     }
 
-    public boolean upgradeTramCapacity() { return doUpgrade(tramCapacityLevel); }
-    public boolean upgradeTramSpeed() { return doUpgrade(tramSpeedLevel); }
+    public boolean upgradeTramCapacity()   { return doUpgrade(tramCapacityLevel); }
+    public boolean upgradeTramSpeed()      { return doUpgrade(tramSpeedLevel); }
     public boolean upgradeTrain1Capacity() { return doUpgrade(train1CapacityLevel); }
-    public boolean upgradeTrain1Speed() { return doUpgrade(train1SpeedLevel); }
+    public boolean upgradeTrain1Speed()    { return doUpgrade(train1SpeedLevel); }
     public boolean upgradeTrain2Capacity() { return doUpgrade(train2CapacityLevel); }
-    public boolean upgradeTrain2Speed() { return doUpgrade(train2SpeedLevel); }
+    public boolean upgradeTrain2Speed()    { return doUpgrade(train2SpeedLevel); }
     public boolean upgradeTrain3Capacity() { return doUpgrade(train3CapacityLevel); }
-    public boolean upgradeTrain3Speed() { return doUpgrade(train3SpeedLevel); }
+    public boolean upgradeTrain3Speed()    { return doUpgrade(train3SpeedLevel); }
 
     private boolean doUpgrade(MutableLiveData<Integer> levelData) {
         Integer lvl = levelData.getValue();
@@ -230,7 +274,7 @@ public class GameView {
         teachers.setValue(t - model.costTeachers);
         owned.add(modelId);
         switch (vehicle) {
-            case "tram": ownedTramModels.setValue(new HashSet<>(owned)); break;
+            case "tram":   ownedTramModels.setValue(new HashSet<>(owned));   break;
             case "train1": ownedTrain1Models.setValue(new HashSet<>(owned)); break;
             case "train2": ownedTrain2Models.setValue(new HashSet<>(owned)); break;
             case "train3": ownedTrain3Models.setValue(new HashSet<>(owned)); break;
@@ -242,7 +286,7 @@ public class GameView {
         Set<String> owned = getOwnedSet(vehicle);
         if (owned == null || !owned.contains(modelId)) return;
         switch (vehicle) {
-            case "tram": activeTramModel.setValue(modelId); break;
+            case "tram":   activeTramModel.setValue(modelId);   break;
             case "train1": activeTrain1Model.setValue(modelId); break;
             case "train2": activeTrain2Model.setValue(modelId); break;
             case "train3": activeTrain3Model.setValue(modelId); break;
@@ -292,27 +336,46 @@ public class GameView {
         tramPassengers = willTake;
         avenidaStudents.setValue(onPlatform - willTake);
         tramActive.setValue(true);
-        tramStatus.setValue("Tramwaj jedzie z " + willTake + " osobami");
+        tramOutward = true;
+        tramStatus.setValue("Tramwaj jedzie...");
         tramProgress.setValue(0);
-        int stepMs = getEffectiveTramStepMs();
+        final int stepMs = getEffectiveTramStepMs();
         handler.postDelayed(new Runnable() {
             int progress = 0;
             @Override public void run() {
-                progress += 10;
-                tramProgress.setValue(progress);
-                if (progress >= 100) {
-                    Long inSchool = schoolStudents.getValue();
-                    if (inSchool != null) schoolStudents.setValue(inSchool + tramPassengers);
-                    tramActive.setValue(false);
-                    tramStatus.setValue("Tramwaj czeka (przewiózł " + tramPassengers + ")");
-                    tramProgress.setValue(0);
-                    tramPassengers = 0;
-                    rollTeacher();
+                if (tramOutward) {
+                    progress += 10;
+                    if (progress > 100) progress = 100;
+                    tramProgress.setValue(progress);
+                    if (progress >= 100) {
+                        Long inSchool = schoolStudents.getValue();
+                        if (inSchool != null) schoolStudents.setValue(inSchool + tramPassengers);
+                        tramPassengers = 0;
+                        tramOutward = false;
+                        tramStatus.setValue("Tramwaj wraca...");
+                        handler.postDelayed(this, stepMs);
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
                 } else {
-                    handler.postDelayed(this, stepMs);
+                    progress -= 10;
+                    if (progress < 0) progress = 0;
+                    tramProgress.setValue(progress);
+                    if (progress <= 0) {
+                        finishTramRide();
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
                 }
             }
         }, stepMs);
+    }
+
+    private void finishTramRide() {
+        tramActive.setValue(false);
+        tramStatus.setValue("Tramwaj czeka");
+        tramProgress.setValue(0);
+        rollTeacher();
     }
 
     private void startTrain1Loop() {
@@ -326,6 +389,7 @@ public class GameView {
     private void startTrain1Ride() {
         if (Boolean.TRUE.equals(train1Active.getValue())) return;
         train1Active.setValue(true);
+        train1Outward = true;
         int passengers = getEffectiveTrain1Passengers();
         int stepMs = getEffectiveTrain1StepMs();
         train1Status.setValue("Linia Pobiedziska jedzie...");
@@ -333,17 +397,38 @@ public class GameView {
         handler.postDelayed(new Runnable() {
             int prog = 0;
             @Override public void run() {
-                prog += 10;
-                train1Progress.setValue(prog);
-                if (prog >= 100) {
-                    Long cur = avenidaStudents.getValue();
-                    if (cur != null) avenidaStudents.setValue(cur + passengers);
-                    train1Active.setValue(false);
-                    train1Status.setValue("Z Pobiedzisk przyjechało " + passengers + " osób");
-                    rollTeacher();
-                } else handler.postDelayed(this, stepMs);
+                if (train1Outward) {
+                    prog += 10;
+                    if (prog > 100) prog = 100;
+                    train1Progress.setValue(prog);
+                    if (prog >= 100) {
+                        train1Outward = false;
+                        train1Status.setValue("Linia Pobiedziska wraca...");
+                        handler.postDelayed(this, stepMs);
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
+                } else {
+                    prog -= 10;
+                    if (prog < 0) prog = 0;
+                    train1Progress.setValue(prog);
+                    if (prog <= 0) {
+                        Long cur = avenidaStudents.getValue();
+                        if (cur != null) avenidaStudents.setValue(cur + passengers);
+                        finishTrain1Ride();
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
+                }
             }
         }, stepMs);
+    }
+
+    private void finishTrain1Ride() {
+        train1Active.setValue(false);
+        train1Status.setValue("Linia Pobiedziska czeka");
+        train1Progress.setValue(0);
+        rollTeacher();
     }
 
     private void startTrain2Loop() {
@@ -357,6 +442,7 @@ public class GameView {
     private void startTrain2Ride() {
         if (Boolean.TRUE.equals(train2Active.getValue())) return;
         train2Active.setValue(true);
+        train2Outward = true;
         int passengers = getEffectiveTrain2Passengers();
         int stepMs = getEffectiveTrain2StepMs();
         train2Status.setValue("Linia Puszczykowo jedzie...");
@@ -364,17 +450,38 @@ public class GameView {
         handler.postDelayed(new Runnable() {
             int prog = 0;
             @Override public void run() {
-                prog += 10;
-                train2Progress.setValue(prog);
-                if (prog >= 100) {
-                    Long cur = avenidaStudents.getValue();
-                    if (cur != null) avenidaStudents.setValue(cur + passengers);
-                    train2Active.setValue(false);
-                    train2Status.setValue("Z Puszczykowa przyjechało " + passengers + " osób");
-                    rollTeacher();
-                } else handler.postDelayed(this, stepMs);
+                if (train2Outward) {
+                    prog += 10;
+                    if (prog > 100) prog = 100;
+                    train2Progress.setValue(prog);
+                    if (prog >= 100) {
+                        train2Outward = false;
+                        train2Status.setValue("Linia Puszczykowo wraca...");
+                        handler.postDelayed(this, stepMs);
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
+                } else {
+                    prog -= 10;
+                    if (prog < 0) prog = 0;
+                    train2Progress.setValue(prog);
+                    if (prog <= 0) {
+                        Long cur = avenidaStudents.getValue();
+                        if (cur != null) avenidaStudents.setValue(cur + passengers);
+                        finishTrain2Ride();
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
+                }
             }
         }, stepMs);
+    }
+
+    private void finishTrain2Ride() {
+        train2Active.setValue(false);
+        train2Status.setValue("Linia Puszczykowo czeka");
+        train2Progress.setValue(0);
+        rollTeacher();
     }
 
     private void startTrain3Loop() {
@@ -388,6 +495,7 @@ public class GameView {
     private void startTrain3Ride() {
         if (Boolean.TRUE.equals(train3Active.getValue())) return;
         train3Active.setValue(true);
+        train3Outward = true;
         int passengers = getEffectiveTrain3Passengers();
         int stepMs = getEffectiveTrain3StepMs();
         train3Status.setValue("Linia Opalenica jedzie...");
@@ -395,17 +503,38 @@ public class GameView {
         handler.postDelayed(new Runnable() {
             int prog = 0;
             @Override public void run() {
-                prog += 10;
-                train3Progress.setValue(prog);
-                if (prog >= 100) {
-                    Long cur = avenidaStudents.getValue();
-                    if (cur != null) avenidaStudents.setValue(cur + passengers);
-                    train3Active.setValue(false);
-                    train3Status.setValue("Z Opalenicy przyjechało " + passengers + " osób");
-                    rollTeacher();
-                } else handler.postDelayed(this, stepMs);
+                if (train3Outward) {
+                    prog += 10;
+                    if (prog > 100) prog = 100;
+                    train3Progress.setValue(prog);
+                    if (prog >= 100) {
+                        train3Outward = false;
+                        train3Status.setValue("Linia Opalenica wraca...");
+                        handler.postDelayed(this, stepMs);
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
+                } else {
+                    prog -= 10;
+                    if (prog < 0) prog = 0;
+                    train3Progress.setValue(prog);
+                    if (prog <= 0) {
+                        Long cur = avenidaStudents.getValue();
+                        if (cur != null) avenidaStudents.setValue(cur + passengers);
+                        finishTrain3Ride();
+                    } else {
+                        handler.postDelayed(this, stepMs);
+                    }
+                }
             }
         }, stepMs);
+    }
+
+    private void finishTrain3Ride() {
+        train3Active.setValue(false);
+        train3Status.setValue("Linia Opalenica czeka");
+        train3Progress.setValue(0);
+        rollTeacher();
     }
 
     @Override

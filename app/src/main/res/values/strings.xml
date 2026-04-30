@@ -1,3 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ZSKtycoon</string>
+
+    <string name="app_name">ZSK Tycoon</string>
+    <string name="app_version">ZSK Tycoon v1.0</string>
+    <string name="app_subtitle">Zarządzaj siecią transportową</string>
+
+    <string name="menu_logo_placeholder">ZSK</string>
+    <string name="menu_btn_play">GRAJ</string>
+    <string name="menu_btn_tram_upgrades">Ulepszenia tramwaju</string>
+    <string name="menu_btn_train_upgrades">Ulepszenia pociągów</string>
+    <string name="menu_btn_exit">Wyjdź z gry</string>
+
+    <string name="header_label_avenida">AVENIDA</string>
+    <string name="header_label_school">SZKOŁA</string>
+    <string name="header_students_unit">uczniów</string>
+    <string name="header_teachers_label">Nauczyciele: %d</string>
+
+    <string name="tram_section_title">Tramwaj</string>
+    <string name="tram_btn_upgrades">Ulepszenia</string>
+    <string name="tram_status_waiting">Tramwaj czeka na pasażerów</string>
+    <string name="tram_status_running">Tramwaj jedzie z %d pasażerami</string>
+    <string name="tram_status_completed">Tramwaj przewiózł %d pasażerów</string>
+
+    <string name="train_line_1_title">Pociąg - Linia 1 (Pobiedziska)</string>
+    <string name="train_line_2_title">Pociąg - Linia 2 (Puszczykowo)</string>
+    <string name="train_line_3_title">Pociąg - Linia 3 (Opalenica)</string>
+    <string name="train_btn_upgrades">Ulepszenia</string>
+    <string name="train_status_waiting">Pociąg czeka na odjazd</string>
+    <string name="train_status_running">Pociąg jedzie...</string>
+    <string name="train_status_arrived">Z linii przyjechało %d pasażerów</string>
+    <string name="train_line_locked">Linia zablokowana (kup w menu głównym)</string>
+
+    <string name="btn_buy_new_line">Kup nową linię</string>
+    <string name="btn_back">←</string>
+    <string name="btn_upgrade_capacity">Ulepsz</string>
+    <string name="btn_upgrade_speed">Ulepsz</string>
+    <string name="btn_upgrade_max">MAX</string>
+
+    <string name="train_upgrades_title">Ulepszenia pociągów</string>
+    <string name="tram_upgrades_title">Ulepszenia tramwaju</string>
+    <string name="tram_upgrade_capacity_title">Pojemność tramwaju</string>
+    <string name="tram_upgrade_speed_title">Prędkość tramwaju</string>
+    <string name="tram_upgrade_models_title">Modele tramwajów</string>
+    <string name="train_section_capacity_title">Pojemność</string>
+    <string name="train_section_speed_title">Prędkość</string>
+    <string name="train_section_models_title">Modele pociągów</string>
+
+    <string name="level_format">Poziom %d/%d</string>
+    <string name="cost_format">%d uczniów</string>
+    <string name="capacity_format">Pojemność: %d</string>
+    <string name="speed_format">Czas przejazdu: %d ms</string>
+
+    <string name="model_btn_buy">Kup</string>
+    <string name="model_btn_select">Wybierz</string>
+    <string name="model_btn_selected">Aktywny</string>
+    <string name="model_cost_format">(koszt: %d naucz.)</string>
+
+    <string name="tram_model_standard_name">Standardowy</string>
+    <string name="tram_model_standard_desc">Podstawowy model tramwaju</string>
+    <string name="tram_model_10_name">Linia 10</string>
+    <string name="tram_model_10_desc">+50% pojemności, -10% prędkości</string>
+    <string name="tram_model_17_name">Linia 17</string>
+    <string name="tram_model_17_desc">+30% pojemności i prędkości</string>
+    <string name="tram_model_5_name">Linia 5</string>
+    <string name="tram_model_5_desc">+60% prędkości i pojemności</string>
+
+    <string name="train_model_standard_name">Standardowy</string>
+    <string name="train_model_standard_desc">Podstawowy model pociągu</string>
+    <string name="train_model_polregio_name">Polregio</string>
+    <string name="train_model_polregio_desc">+50% prędkości</string>
+    <string name="train_model_kw_name">KW</string>
+    <string name="train_model_kw_desc">+60% pojemności</string>
+    <string name="train_model_intercity_name">Intercity</string>
+    <string name="train_model_intercity_desc">+40% prędkości i pojemności</string>
+
+    <string name="msg_not_enough_students">Niewystarczająca liczba uczniów!</string>
+    <string name="msg_not_enough_teachers">Niewystarczająca liczba nauczycieli!</string>
+    <string name="msg_upgrade_success">Ulepszono pomyślnie!</string>
+    <string name="msg_max_level_reached">Osiągnięto maksymalny poziom!</string>
+    <string name="msg_model_purchased">Zakupiono model!</string>
+    <string name="msg_model_selected">Wybrano model!</string>
+    <string name="msg_new_line_purchased">Zakupiono nową linię!</string>
+
+    <string name="msg_confirm_exit">Czy na pewno chcesz wyjść?</string>
+    <string name="msg_confirm_exit_title">Wyjście z gry</string>
+    <string name="msg_yes">Tak</string>
+    <string name="msg_no">Nie</string>
+    <string name="msg_ok">OK</string>
+
+    <string name="tram_content_description">Tramwaj</string>
+    <string name="tram_progress_content_description">Tramwaj na trasie</string>
+    <string name="train_content_description">Pociąg</string>
+    <string name="train_progress_content_description">Pociąg na trasie</string>
+    <string name="nav_back_content_description">Wróć</string>
+    <string name="icon_capacity_desc">Pojemność</string>
+    <string name="icon_speed_desc">Prędkość</string>
+    <string name="icon_logo_desc">Logo ZSK Tycoon</string>
+    <string name="header_label_teachers">Nauczyciele</string>
+    <string name="weather_loading">Ładuje pogodę...</string>
+    <string name="weather_multiplier_default">x1.00</string>
 </resources>

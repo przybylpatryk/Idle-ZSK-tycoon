@@ -3,39 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F0F4FF">
+    android:background="@color/background_main">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:background="@drawable/bg_header"
+        style="@style/MenuHeader"
         android:orientation="vertical"
-        android:gravity="center"
-        android:paddingBottom="32dp">
+        android:gravity="center">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Logo"
-            android:textSize="52sp" />
+            style="@style/MenuAppName"
+            android:text="@string/app_name" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZSK TYCOON"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:letterSpacing="0.15"
-            android:layout_marginTop="8dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Zarządzaj siecią transportową"
-            android:textSize="13sp"
-            android:textColor="#BBDEFB"
-            android:layout_marginTop="4dp" />
+            style="@style/MenuSubtitle"
+            android:text="@string/app_subtitle" />
     </LinearLayout>
 
     <LinearLayout
@@ -45,64 +26,20 @@
         android:orientation="vertical"
         android:gravity="center"
         android:paddingHorizontal="32dp"
-        android:paddingTop="24dp"
-        android:paddingBottom="24dp">
+        android:paddingVertical="24dp">
 
         <Button
             android:id="@+id/btn_play"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:text="▶  GRAJ"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/btn_primary"
-            android:stateListAnimator="@null"
-            android:letterSpacing="0.08" />
-
-        <Button
-            android:id="@+id/btn_tram_upgrade"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:text="Ulepszenia tramwaju"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="#1E88E5"
-            android:background="@drawable/btn_secondary"
-            android:stateListAnimator="@null"
-            android:layout_marginTop="14dp" />
-
-        <Button
-            android:id="@+id/btn_train_upgrade"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:text="Ulepszenia pociągów"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="#1E88E5"
-            android:background="@drawable/btn_secondary"
-            android:stateListAnimator="@null"
-            android:layout_marginTop="14dp" />
+            style="@style/MenuPrimaryButton"
+            android:text="@string/menu_btn_play" />
 
         <Button
             android:id="@+id/btn_exit"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="Wyjdź z gry"
-            android:textSize="14sp"
-            android:textColor="#90A4AE"
-            android:background="@android:color/transparent"
-            android:stateListAnimator="@null"
-            android:layout_marginTop="20dp" />
+            style="@style/MenuGhostButton"
+            android:text="@string/menu_btn_exit" />
     </LinearLayout>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ZSK Tycoon v1.0"
-        android:textSize="11sp"
-        android:textColor="#B0BEC5"
-        android:gravity="center"
-        android:paddingBottom="16dp" />
-
+        style="@style/FooterVersion"
+        android:text="@string/app_version" />
 </LinearLayout>
