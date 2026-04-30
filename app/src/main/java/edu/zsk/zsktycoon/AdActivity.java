@@ -80,7 +80,9 @@ public class AdActivity extends AppCompatActivity {
 
                 new Handler(Looper.getMainLooper()).post(() -> imageView.setImageBitmap(bitmap));
             } catch (Exception e) {
-
+                new Handler(Looper.getMainLooper()).post(() ->
+                        imageView.setImageResource(android.R.drawable.ic_menu_gallery)
+                );
             }
         }).start();
     }

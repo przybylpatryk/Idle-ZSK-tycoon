@@ -33,7 +33,7 @@ public class TrainUpgradeActivity extends AppCompatActivity {
         setupTrainSection(3, findViewById(R.id.train3_section), gm.train3CapacityLevel, gm.train3SpeedLevel,
                 gm.activeTrain3Model, gm.ownedTrain3Models, GameView.TRAIN_MODELS, "train3");
 
-        findViewById(R.id.train1_section).setVisibility(trainNumber == 1 ? View.VISIBLE : View.GONE);
+        findViewById(R.id.train1_wrapper).setVisibility(trainNumber == 1 ? View.VISIBLE : View.GONE);
         findViewById(R.id.train2_wrapper).setVisibility(trainNumber == 2 ? View.VISIBLE : View.GONE);
         findViewById(R.id.train3_wrapper).setVisibility(trainNumber == 3 ? View.VISIBLE : View.GONE);
     }
