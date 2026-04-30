@@ -12,11 +12,10 @@ import edu.zsk.zsktycoon.data.GameStateEntity;
 
 public class GameView {
 
-    private static GameView instance;
-
     private AppDatabase db;
 
-    public static GameView getInstance() {
+    private static volatile GameView instance;
+    public static synchronized GameView getInstance() {
         if (instance == null) instance = new GameView();
         return instance;
     }
