@@ -57,8 +57,11 @@ public class AdActivity extends AppCompatActivity {
             GameView gm = GameView.getInstance();
             Long current = gm.teachers.getValue();
             if (current != null) {
-                gm.teachers.setValue(current + 500);
+                gm.teachers.setValue(current + 5);
             }
+            Long ads = gm.totalAdsWatched.getValue();
+            if (ads != null) gm.totalAdsWatched.setValue(ads + 1);
+            gm.requestSave();
             if (countDownTimer != null) countDownTimer.cancel();
             finish();
         });

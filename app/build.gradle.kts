@@ -42,4 +42,6 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation ("androidx.room:room-runtime:2.8.4")
+    annotationProcessor ("androidx.room:room-compiler:2.8.4")
 }
