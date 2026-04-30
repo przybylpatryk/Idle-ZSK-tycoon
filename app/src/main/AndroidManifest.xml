@@ -15,9 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ZSKTycoon">
         <activity
-            android:name=".AdActivity"
-            android:exported="false" />
-        <activity
             android:name=".MenuActivity"
             android:exported="true">
             <intent-filter>
@@ -34,6 +31,12 @@
             android:exported="false" />
         <activity
             android:name=".TrainUpgradeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StatsActivity"
             android:exported="false" />
     </application>
 

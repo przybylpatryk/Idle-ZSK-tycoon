@@ -34,6 +34,11 @@
             android:text="@string/menu_btn_play" />
 
         <Button
+            android:id="@+id/btn_stats"
+            style="@style/MenuSecondaryButton"
+            android:text="@string/menu_btn_stats" />
+
+        <Button
             android:id="@+id/btn_exit"
             style="@style/MenuGhostButton"
             android:text="@string/menu_btn_exit" />
