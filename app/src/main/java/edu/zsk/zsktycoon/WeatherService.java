@@ -82,7 +82,7 @@ public class WeatherService {
     }
 
     private static float getMultiplierFromCode(int code) {
-        // WMO weather codes:
+        // WMO kody pogodowe:
         // 51-67 = deszcz/mżawka
         // 80-82 = przelotny deszcz
         // 71-77 = śnieg

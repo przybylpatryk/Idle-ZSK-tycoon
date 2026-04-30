@@ -1,0 +1,11 @@
+Patryk:
+	-Wygląd aplikacji	
+	-Baza danych
+	-Api z reklamami
+	-Szkielet aplikacji
+
+Stanisław:
+	-Wygląd aplikacji
+	-Api pogodowe
+	-Progress bar
+	-Ulepszenia

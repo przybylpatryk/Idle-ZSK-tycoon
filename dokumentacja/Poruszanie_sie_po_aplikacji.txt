@@ -1,0 +1,11 @@
+Poruszanie się po aplikacji IdleZSKTycoon jest banalne oraz bardzo intuicyjne.
+ 
+	1. Na początku po uruchomieniu aplikacji widać 3 przyciski: graj (przenosi nas dalej i rozpoczyna grę), statystyki (ukazuje nam informacje o 	statystykach naszej rozgrywki np.: ile uczniów zebraliśmy, ile mamy linii kolejowych itp.) oraz wyjdź z gry (wychodzi z gry).
+ 
+	2. Po naciśnięciu przycisku graj widzimy informacje ile mamy uczniów oraz nauczycieli, mamy także nasze linie tramwajowe oraz kolejowe które 	animują się na ekranie. Na górze widać aktualną pogodę w Poznaniu i jej wpływ na prędkość pojazdów. Na dole ekranu znajduje się przycisk kupna 	nowej linii kolejowej. Dodatkowo w górnym pasku znajduje się przycisk "+5 nauczycieli" który otwiera ekran z reklamą.
+ 
+	3. Przy każdej linii jest przycisk "Ulepszenia" który przenosi nas do odpowiedniego ekranu — widzimy tam dwie sekcje: pojemność i prędkość, 	każda z aktualnym poziomem (maks. 5) oraz kosztem następnego ulepszenia w uczniach. Poniżej znajduje się lista dostępnych modeli pojazdów: 	przy modelach których jeszcze nie posiadamy widnieje przycisk "Kup" (za nauczycieli), a przy już kupionych przycisk "Wybierz". Powrót do 	ekranu gry następuje przez przycisk strzałki w lewym górnym rogu.
+ 
+	4. Ekran reklamy wyświetla losowy obrazek oraz odliczanie 10 sekund, po których odblokowuje się przycisk odbioru nagrody (+5 nauczycieli). Po 	jego naciśnięciu wracamy automatycznie do ekranu gry.
+ 
+	5. Ekran statystyk jest tylko do odczytu i wyświetla 6 informacji: łączną liczbę przewiezionych pasażerów, liczbę posiadanych linii, zebranych 	nauczycieli, obejrzane reklamy, kupione linie oraz wykonane ulepszenia. Wracamy z niego strzałką w lewym górnym rogu.

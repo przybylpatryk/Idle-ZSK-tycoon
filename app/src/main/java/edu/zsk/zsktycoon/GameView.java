@@ -435,7 +435,10 @@ public class GameView {
     private void startTramRide() {
         if (Boolean.TRUE.equals(tramActive.getValue())) return;
         Long onPlatform = avenidaStudents.getValue();
-        if (onPlatform == null || onPlatform == 0) return;
+        if (onPlatform == null || onPlatform == 0) {
+            handler.postDelayed(this::startTramRide, 2000);
+            return;
+        }
         int capacity = getEffectiveTramCapacity();
         long willTake = Math.min(onPlatform, capacity);
         tramPassengers = willTake;

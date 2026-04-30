@@ -1,0 +1,9 @@
+Aplikacja używa Room (SQLite) z jedną tabelą game_state, która przechowuje
+cały stan gry w jednym wierszu (zawsze id = 1). Zapisuje się tam wszystko —
+zasoby gracza, poziomy ulepszeń, posiadane modele, odblokowane linie,
+statystyki. Zapis następuje automatycznie co 5 sekund po każdej akcji gracza.
+ 
+Pola przechowujące zbiory posiadanych modeli (typ Set<String>) są konwertowane
+do formatu JSON przed zapisem do bazy i z powrotem przy odczycie, za pomocą
+klasy Converters.
+ 
