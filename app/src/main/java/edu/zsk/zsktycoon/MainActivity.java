@@ -1,15 +1,15 @@
 package edu.zsk.zsktycoon;
 
 import android.content.Intent;
-import android.graphics.drawable.ClipDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
         ImageView train1Image = findViewById(R.id.train1_image);
         ImageView train2Image = findViewById(R.id.train2_image);
         ImageView train3Image = findViewById(R.id.train3_image);
+
+        FrameLayout tramContainer   = findViewById(R.id.tram_container);
+        FrameLayout train1Container = findViewById(R.id.train1_container);
+        FrameLayout train2Container = findViewById(R.id.train2_container);
+        FrameLayout train3Container = findViewById(R.id.train3_container);
 
         TextView tramStatus   = findViewById(R.id.tram_status);
         TextView trainStatus1 = findViewById(R.id.train_status1);
@@ -57,58 +62,40 @@ public class MainActivity extends AppCompatActivity {
         gm.schoolStudents.observe(this, val -> schoolText.setText(String.valueOf(val)));
         gm.teachers.observe(this, val -> teacherText.setText(String.valueOf(val)));
 
-        gm.tramProgress.observe(this, val -> {
-            ClipDrawable clip = getClipFromImageView(tramImage);
-            if (clip != null) clip.setLevel(val * 100);
+        tramImage.setImageResource(gm.getTramDrawableRes(gm.activeTramModel.getValue()));
+        train1Image.setImageResource(gm.getTrainDrawableRes(gm.activeTrain1Model.getValue()));
+        train2Image.setImageResource(gm.getTrainDrawableRes(gm.activeTrain2Model.getValue()));
+        train3Image.setImageResource(gm.getTrainDrawableRes(gm.activeTrain3Model.getValue()));
+
+        gm.tramProgress.observe(this, progress -> {
+            if (tramContainer.getWidth() == 0) {
+                tramContainer.post(() -> moveVehicle(tramImage, tramContainer, progress));
+            } else {
+                moveVehicle(tramImage, tramContainer, progress);
+            }
         });
         gm.tramStatus.observe(this, tramStatus::setText);
 
-
-        gm.activeTramModel.observe(this, modelId -> {
-            int currentLevel = getCurrentClipLevel(tramImage);
-            tramImage.setImageDrawable(ContextCompat.getDrawable(this, gm.getTramDrawableRes(modelId)));
-            ClipDrawable clip = getClipFromImageView(tramImage);
-            if (clip != null) clip.setLevel(currentLevel);
-        });
-
-        gm.train1Progress.observe(this, val -> {
-            ClipDrawable clip = getClipFromImageView(train1Image);
-            if (clip != null) clip.setLevel(val * 100);
-        });
+        gm.train1Progress.observe(this, progress -> moveVehicle(train1Image, train1Container, progress));
         gm.train1Status.observe(this, trainStatus1::setText);
 
-        gm.activeTrain1Model.observe(this, modelId -> {
-            int currentLevel = getCurrentClipLevel(train1Image);
-            train1Image.setImageDrawable(ContextCompat.getDrawable(this, gm.getTrainDrawableRes(modelId)));
-            ClipDrawable clip = getClipFromImageView(train1Image);
-            if (clip != null) clip.setLevel(currentLevel);
-        });
-
-        gm.train2Progress.observe(this, val -> {
-            ClipDrawable clip = getClipFromImageView(train2Image);
-            if (clip != null) clip.setLevel(val * 100);
-        });
+        gm.train2Progress.observe(this, progress -> moveVehicle(train2Image, train2Container, progress));
         gm.train2Status.observe(this, trainStatus2::setText);
 
-        gm.activeTrain2Model.observe(this, modelId -> {
-            int currentLevel = getCurrentClipLevel(train2Image);
-            train2Image.setImageDrawable(ContextCompat.getDrawable(this, gm.getTrainDrawableRes(modelId)));
-            ClipDrawable clip = getClipFromImageView(train2Image);
-            if (clip != null) clip.setLevel(currentLevel);
-        });
-
-        gm.train3Progress.observe(this, val -> {
-            ClipDrawable clip = getClipFromImageView(train3Image);
-            if (clip != null) clip.setLevel(val * 100);
-        });
+        gm.train3Progress.observe(this, progress -> moveVehicle(train3Image, train3Container, progress));
         gm.train3Status.observe(this, trainStatus3::setText);
 
-        gm.activeTrain3Model.observe(this, modelId -> {
-            int currentLevel = getCurrentClipLevel(train3Image);
-            train3Image.setImageDrawable(ContextCompat.getDrawable(this, gm.getTrainDrawableRes(modelId)));
-            ClipDrawable clip = getClipFromImageView(train3Image);
-            if (clip != null) clip.setLevel(currentLevel);
-        });
+        gm.activeTramModel.observe(this, modelId ->
+                tramImage.setImageResource(gm.getTramDrawableRes(modelId)));
+
+        gm.activeTrain1Model.observe(this, modelId ->
+                train1Image.setImageResource(gm.getTrainDrawableRes(modelId)));
+
+        gm.activeTrain2Model.observe(this, modelId ->
+                train2Image.setImageResource(gm.getTrainDrawableRes(modelId)));
+
+        gm.activeTrain3Model.observe(this, modelId ->
+                train3Image.setImageResource(gm.getTrainDrawableRes(modelId)));
 
         gm.train2Owned.observe(this, owned ->
                 train2Card.setVisibility(owned ? View.VISIBLE : View.GONE));
@@ -151,15 +138,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, AdActivity.class)));
     }
 
-    private ClipDrawable getClipFromImageView(ImageView iv) {
-        if (iv.getDrawable() instanceof ClipDrawable) {
-            return (ClipDrawable) iv.getDrawable();
-        }
-        return null;
-    }
-
-    private int getCurrentClipLevel(ImageView iv) {
-        ClipDrawable clip = getClipFromImageView(iv);
-        return clip != null ? clip.getLevel() : 0;
+    private void moveVehicle(ImageView vehicle, ViewGroup container, int progress) {
+        float maxX = container.getWidth() - vehicle.getWidth();
+        float x = (progress / 100f) * maxX;
+        vehicle.setTranslationX(x);
     }
 }

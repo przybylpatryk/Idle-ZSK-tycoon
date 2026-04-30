@@ -106,40 +106,50 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:weightSum="3">
+                android:paddingVertical="0dp"
+                android:layout_marginBottom="4dp">
 
                 <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:orientation="vertical"
                     android:gravity="center">
 
                     <ImageView
                         android:id="@+id/avenida_icon"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/avenida" />
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:src="@drawable/avenida"
+                        android:scaleType="fitCenter" />
 
                     <TextView
                         android:id="@+id/avenida_text"
                         style="@style/AvenidaValue"
-                        android:text="0" />
+                        android:text="0"
+                        android:layout_marginTop="2dp" />
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/tram_image"
+                <FrameLayout
+                    android:id="@+id/tram_container"
                     android:layout_width="0dp"
-                    android:layout_weight="1.5"
-                    android:layout_height="80dp"
-                    android:src="@drawable/clip_tram_standard"
-                    android:scaleType="fitCenter" />
+                    android:layout_weight="1"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:clipChildren="false">
+
+                    <ImageView
+                        android:id="@+id/tram_image"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_tram_standard" />
+                </FrameLayout>
 
                 <ImageView
                     android:id="@+id/school_icon"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:layout_height="48dp"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:src="@drawable/zsk"
                     android:scaleType="fitCenter" />
             </LinearLayout>
@@ -147,12 +157,14 @@
             <TextView
                 android:id="@+id/tram_status"
                 style="@style/StatusText"
-                android:text="@string/tram_status_waiting" />
+                android:text="@string/tram_status_waiting"
+                android:layout_marginTop="8dp" />
 
             <Button
                 android:id="@+id/tram_upgrade_btn"
                 style="@style/CardButton"
-                android:text="@string/tram_btn_upgrades" />
+                android:text="@string/tram_btn_upgrades"
+                android:layout_marginTop="4dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -177,12 +189,21 @@
                     android:text="@string/train_btn_upgrades" />
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/train1_image"
+            <FrameLayout
+                android:id="@+id/train1_container"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:src="@drawable/clip_train_standard"
-                android:scaleType="fitStart" />
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:clipChildren="false">
+
+                <ImageView
+                    android:id="@+id/train1_image"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_train_standard" />
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/train_status1"
@@ -192,8 +213,7 @@
 
         <LinearLayout
             android:id="@+id/train2_card"
-            style="@style/TrainCard"
-            android:visibility="gone">
+            style="@style/TrainCard">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -213,12 +233,21 @@
                     android:text="@string/train_btn_upgrades" />
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/train2_image"
+            <FrameLayout
+                android:id="@+id/train2_container"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:src="@drawable/clip_train_standard"
-                android:scaleType="fitStart" />
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:clipChildren="false">
+
+                <ImageView
+                    android:id="@+id/train2_image"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_train_standard" />
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/train_status2"
@@ -228,8 +257,7 @@
 
         <LinearLayout
             android:id="@+id/train3_card"
-            style="@style/TrainCard"
-            android:visibility="gone">
+            style="@style/TrainCard">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -249,12 +277,21 @@
                     android:text="@string/train_btn_upgrades" />
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/train3_image"
+            <FrameLayout
+                android:id="@+id/train3_container"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:src="@drawable/clip_train_standard"
-                android:scaleType="fitStart" />
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:clipChildren="false">
+
+                <ImageView
+                    android:id="@+id/train3_image"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_train_standard" />
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/train_status3"

@@ -34,16 +34,6 @@
             android:text="@string/menu_btn_play" />
 
         <Button
-            android:id="@+id/btn_tram_upgrade"
-            style="@style/MenuSecondaryButton"
-            android:text="@string/menu_btn_tram_upgrades" />
-
-        <Button
-            android:id="@+id/btn_train_upgrade"
-            style="@style/MenuSecondaryButton"
-            android:text="@string/menu_btn_train_upgrades" />
-
-        <Button
             android:id="@+id/btn_exit"
             style="@style/MenuGhostButton"
             android:text="@string/menu_btn_exit" />

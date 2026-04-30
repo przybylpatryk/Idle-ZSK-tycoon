@@ -34,6 +34,7 @@ public class AdActivity extends AppCompatActivity {
         CountDownTimer countDownTimer;
 
         claim.setEnabled(false);
+        claim.setBackgroundColor(0xFFA0AEC0);
 
         loadImgFromUrl("https://picsum.photos/400/300", image);
 
@@ -42,6 +43,7 @@ public class AdActivity extends AppCompatActivity {
             public void onFinish() {
                 timer.setText("Nagroda gotowa");
                 claim.setEnabled(true);
+                claim.setBackgroundColor(0xFF10B981);
             }
 
             @Override
@@ -55,7 +57,7 @@ public class AdActivity extends AppCompatActivity {
             GameView gm = GameView.getInstance();
             Long current = gm.teachers.getValue();
             if (current != null) {
-                gm.teachers.setValue(current + 5);
+                gm.teachers.setValue(current + 500);
             }
             if (countDownTimer != null) countDownTimer.cancel();
             finish();

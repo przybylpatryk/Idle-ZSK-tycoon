@@ -12,4 +12,5 @@
     <color name="primary_dark">@color/accent_dark</color>
     <color name="info">#29B6F6</color>
     <color name="white">#FFFFFF</color>
+    <color name="selected_model">#17B7E6</color>
 </resources>

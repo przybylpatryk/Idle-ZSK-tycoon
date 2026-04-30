@@ -73,9 +73,20 @@ public class TramUpgradeActivity extends AppCompatActivity {
 
             buyBtn.setVisibility(isOwned ? View.GONE : View.VISIBLE);
             buyBtn.setOnClickListener(v -> gm.buyModel("tram", model.id));
+
             selectBtn.setVisibility(isOwned ? View.VISIBLE : View.GONE);
-            selectBtn.setEnabled(!isActive);
-            selectBtn.setOnClickListener(v -> gm.setActiveModel("tram", model.id));
+            if (isOwned) {
+                if (isActive) {
+                    selectBtn.setText("Wybrano");
+                    selectBtn.setBackgroundTintList(android.content.res.ColorStateList.valueOf(getResources().getColor(R.color.selected_model)));
+                    selectBtn.setEnabled(false);
+                } else {
+                    selectBtn.setText("Wybierz");
+                    selectBtn.setBackgroundTintList(android.content.res.ColorStateList.valueOf(getResources().getColor(R.color.accent)));
+                    selectBtn.setEnabled(true);
+                }
+                selectBtn.setOnClickListener(v -> gm.setActiveModel("tram", model.id));
+            }
 
             modelsContainer.addView(item);
         }

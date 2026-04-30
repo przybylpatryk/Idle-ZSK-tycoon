@@ -43,8 +43,7 @@
             <Button
                 android:id="@+id/claim_button"
                 style="@style/ClaimButton"
-                android:text="Odbierz 5 nauczycieli"
-                android:enabled="false" />
+                android:text="Odbierz 5 nauczycieli" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -103,22 +103,22 @@ public class GameView {
     }
 
     public int getTramDrawableRes(String modelId) {
-        if (modelId == null) return R.drawable.clip_tram_standard;
+        if (modelId == null) return R.drawable.ic_tram_standard;
         switch (modelId) {
-            case "10": return R.drawable.clip_tram_10;
-            case "17": return R.drawable.clip_tram_17;
-            case "5":  return R.drawable.clip_tram_5;
-            default:   return R.drawable.clip_tram_standard;
+            case "10": return R.drawable.ic_tram_10;
+            case "17": return R.drawable.ic_tram_17;
+            case "5":  return R.drawable.ic_tram_5;
+            default:   return R.drawable.ic_tram_standard;
         }
     }
 
     public int getTrainDrawableRes(String modelId) {
-        if (modelId == null) return R.drawable.clip_train_standard;
+        if (modelId == null) return R.drawable.ic_train_standard;
         switch (modelId) {
-            case "KW":        return R.drawable.clip_train_kw;
-            case "Polregio":  return R.drawable.clip_train_polregio;
-            case "Intercity": return R.drawable.clip_train_intercity;
-            default:          return R.drawable.clip_train_standard;
+            case "KW":        return R.drawable.ic_train_kw;
+            case "Polregio":  return R.drawable.ic_train_polregio;
+            case "Intercity": return R.drawable.ic_train_intercity;
+            default:          return R.drawable.ic_train_standard;
         }
     }
 
